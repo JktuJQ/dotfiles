@@ -10,11 +10,6 @@
     home.homeDirectory = "/home/jktujq";
     home.stateVersion = "26.05";
 
-    home.packages = with pkgs; [
-    
-    ];
-
-    home.file = {
-
-    };
+    home.packages = with pkgs; [ ];
+    home.file = { };
 }
