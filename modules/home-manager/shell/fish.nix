@@ -1,41 +1,71 @@
-{ config, pkgs, lib, ... }:
-
+{ pkgs, config, dotfilesDir, ... }:
 {
     programs.fish = {
         enable = true;
-        shellAliases = {
-            ls = "grc --config=conf.ls ls --color=auto";
-            ll = "grc --config=conf.ls ls -l --color=auto";
-            la = "grc --config=conf.ls ls -la --color=auto";
-            l = "grc --config=conf.ls ls -CF --color=auto";
-            df = "grc df";
-            mount = "grc mount";
-            ps = "grc ps aux";
-            netstat = "grc netstat";
-            ping = "grc ping";
-            traceroute = "grc traceroute";
-            diff = "grc diff";
-            last = "grc last";
-            ifconfig = "grc ifconfig";
-            ip = "grc ip";
-
-            cat = "bat --style=plain --paging=never";
-            tree = "eza --tree --icons --color=always --group-directories-first";
-            rebuild = "sudo nixos-rebuild switch --flake ~/dotfiles#nixos";
-            update = "nix flake update --flake ~/dotfiles && rebuild";
-        };
-        interactiveShellInit = ''
-            set fish_greeting
-            fish_config theme show Catppuccin Mocha
-            starship init fish | source
-        '';
         plugins = [
-            { name = "z"; src = pkgs.fishPlugins.z.src; }
             { name = "autopair"; src = pkgs.fishPlugins.autopair.src; }
             { name = "fzf-fish"; src = pkgs.fishPlugins.fzf-fish.src; }
             { name = "done"; src = pkgs.fishPlugins.done.src; }
-            { name = "grc"; src = pkgs.fishPlugins.grc.src; }
             { name = "colored-man-pages"; src = pkgs.fishPlugins.colored-man-pages.src; }
         ];
+        shellAliases = {
+            df = "rgrc df";
+            mount = "rgrc mount";
+            ps = "rgrc ps aux";
+            netstat = "rgrc netstat";
+            ping = "rgrc ping";
+            traceroute = "rgrc traceroute";
+            diff = "rgrc diff";
+            last = "rgrc last";
+            ifconfig = "rgrc ifconfig";
+            ip = "rgrc ip";
+            du = "rgrc du";
+            free = "rgrc free";
+            uptime = "rgrc uptime";
+            blkid = "rgrc blkid";
+            curl = "rgrc curl";
+            env = "rgrc env";
+            fdisk = "rgrc fdisk";
+            findmnt = "rgrc findmnt";
+            gcc = "rgrc gcc";
+            getfacl = "rgrc getfacl";
+            id = "rgrc id";
+            iptables = "rgrc iptables";
+            journalctl = "rgrc journalctl --no-pager | less -R";
+            lsattr = "rgrc lsattr";
+            lsblk = "rgrc lsblk";
+            lsmod = "rgrc lsmod";
+            lspci = "rgrc lspci";
+            sensors = "rgrc sensors";
+            ss = "rgrc ss";
+            stat = "rgrc stat";
+            sysctl = "rgrc sysctl";
+            systemctl = "rgrc systemctl";
+            tail = "rgrc tail";
+            tune2fs = "rgrc tune2fs";
+            vmstat = "rgrc vmstat";
+            go = "rgrc go";
+
+            z = "zoxide cd";
+            zi = "zoxide i";
+            zq = "zoxide query";
+            ls = "eza --icons --color=always --group-directories-first";
+            tree = "eza --tree --icons --color=always --group-directories-first";
+            cat = "bat --style=plain --paging=never";
+            catp = "bat --style=plain --paging=always";
+            grep = "rg";
+            fdf = "fd --type f";
+            fdd = "fd --type d";
+            fzfr = "fzf --height 40% --border --reverse --preview 'bat --style=plain --color=always {}'";
+
+            rebuild = "sudo nixos-rebuild switch --flake ${dotfilesDir}#nixos";
+            update = "nix flake update --flake ${dotfilesDir} && rebuild";
+        };
+        interactiveShellInit = ''
+            set fish_greeting
+
+            zoxide init fish | source
+            fzf_configure_bindings --directory=\ct --history=\cr --variables=\cv
+        '';
     };
 }

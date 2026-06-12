@@ -23,10 +23,10 @@
                         home-manager.useGlobalPkgs = true;
                         home-manager.useUserPackages = true;
                         home-manager.users.jktujq = import ./home-manager/jktujq.nix;
-                        home-manager.extraSpecialArgs = { inherit inputs; };
+                        home-manager.extraSpecialArgs = { inherit inputs; self = self; };
                     }
                 ];
-                specialArgs = { inherit inputs; };
+                specialArgs = { inherit inputs; self = self; };
             };
         };
 }

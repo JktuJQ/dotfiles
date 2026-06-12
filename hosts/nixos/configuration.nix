@@ -1,19 +1,16 @@
-{
-    config,
-    pkgs,
-    inputs,
-    ...
-}:
-
+{ self, ... }:
 {
     imports = [
-        ./hardware.nix
-        ../../modules/system/boot.nix
-        ../../modules/system/locale.nix
-        ../../modules/system/networking.nix
-        ../../modules/system/services/openssh.nix
-        ../../modules/hardware/btrfs.nix
-        ../../modules/users/jktujq.nix
+        (self + "/hosts/nixos/hardware_configuration.nix")
+        
+        (self + "/modules/nixos/users/jktujq.nix")
+
+        (self + "/modules/nixos/boot.nix")
+        (self + "/modules/nixos/locale.nix")
+        (self + "/modules/nixos/fonts.nix")
+        (self + "/modules/nixos/networking.nix")
+
+        (self + "/modules/nixos/services/openssh.nix")
     ];
 
     system.stateVersion = "26.05";
