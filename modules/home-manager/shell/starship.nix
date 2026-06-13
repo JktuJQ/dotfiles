@@ -21,7 +21,7 @@ in
                 "[](fg:green bg:sapphire)"
                 "[](fg:sapphire bg:lavender)"
                 "$time"
-                "[](fg:lavender)"
+                "[](fg:lavender)"
                 "$line_break"
                 "[╰─](fg:surface2)"
                 "$character"
