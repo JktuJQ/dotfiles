@@ -19,12 +19,9 @@ let
 
     colors = config.lib.stylix.colors;
 in {
+    wayland.windowManager.hyprland.systemd.enable = false;
+
     xdg.configFile = (builtins.listToAttrs (collectFiles (self + "/external/hypr") "hypr")) // {
-        "hypr/variables.lua".text = ''
-            return {
-                mainMod = "SUPER",
-            }
-        '';
         "hypr/colors.lua".text = ''
             return {
                 background = "${colors.base00}",

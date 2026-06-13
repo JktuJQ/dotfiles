@@ -8,7 +8,6 @@ rec {
         (self + "/modules/nixos/boot.nix")
 
         (self + "/modules/nixos/locale.nix")
-        (self + "/modules/nixos/fonts.nix")
 
         (self + "/modules/nixos/user.nix")
         (self + "/modules/nixos/networking.nix")
@@ -44,10 +43,14 @@ rec {
             (self + "/modules/home-manager/shells/bash.nix")
             (self + "/modules/home-manager/shells/fish.nix")
 
+            # Terminals
+            (self + "/modules/home-manager/terminals/alacritty.nix")
+
             # Editors
             (self + "/modules/home-manager/editors/nvim.nix")
 
             # Desktop
+            (self + "/modules/home-manager/desktop/uwsm.nix")
             (self + "/modules/home-manager/desktop/hyprland.nix")
         ];
 
@@ -58,6 +61,14 @@ rec {
     stylix = {
         enable = true;
         base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
+        fonts = {
+            monospace = {
+                package = pkgs.nerd-fonts.jetbrains-mono;
+                name = "JetBrainsMono Nerd Font";
+            };
+            sizes.terminal = 18;
+        };
+        opacity.terminal = 0.80;
         autoEnable = true;
     };
 
