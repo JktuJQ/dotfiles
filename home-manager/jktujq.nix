@@ -13,6 +13,8 @@
         (self + "/modules/home-manager/shell/fish.nix")
 
         (self + "/modules/home-manager/editor/nvim.nix")
+
+        (self + "/modules/home-manager/desktop/dconf.nix")
     ];
 
     home.username = "jktujq";

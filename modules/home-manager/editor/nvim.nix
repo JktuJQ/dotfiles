@@ -6,7 +6,8 @@
         vimAlias = true;
         sideloadInitLua = true;
     };
-
     home.file.".config/nvim".source = config.lib.file.mkOutOfStoreSymlink
         "${dotfilesDir}/external/nvim";
+
+    stylix.targets.neovim.enable = false;
 }
