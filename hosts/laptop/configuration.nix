@@ -27,7 +27,10 @@ rec {
     my.user.name = "jktujq";
     my.user.homeDir = "/home/${my.user.name}";
     home-manager.users.${my.user.name} = { config, pkgs, ... }: {
-        _module.args.dotfilesDir = "${my.user.homeDir}/dotfiles";
+        _module.args = {
+            self = self;
+            dotfilesDir = "${my.user.homeDir}/dotfiles";
+        };
 
         imports = [
             # CLI
