@@ -46,9 +46,7 @@
             vmstat = "rgrc vmstat";
             go = "rgrc go";
 
-            z = "zoxide cd";
-            zi = "zoxide i";
-            zq = "zoxide query";
+            cd = "z";
             ls = "eza --icons --color=always --group-directories-first";
             tree = "eza --tree --icons --color=always --group-directories-first";
             cat = "bat --style=plain --paging=never";
@@ -63,6 +61,9 @@
         };
         interactiveShellInit = ''
             set fish_greeting
+            fastfetch
+
+            starship init fish | source
 
             zoxide init fish | source
             fzf_configure_bindings --directory=\ct --history=\cr --variables=\cv

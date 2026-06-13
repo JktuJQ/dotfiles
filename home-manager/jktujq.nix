@@ -8,7 +8,9 @@
         (self + "/modules/home-manager/cli/coreutils.nix")
         (self + "/modules/home-manager/cli/git.nix")
         (self + "/modules/home-manager/cli/colors.nix")
+        (self + "/modules/home-manager/cli/fastfetch.nix")
 
+        (self + "/modules/home-manager/shell/starship.nix")
         (self + "/modules/home-manager/shell/bash.nix")
         (self + "/modules/home-manager/shell/fish.nix")
 
