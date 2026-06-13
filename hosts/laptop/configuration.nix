@@ -36,13 +36,13 @@ rec {
             (self + "/modules/home-manager/cli/colors.nix")
             (self + "/modules/home-manager/cli/fastfetch.nix")
 
-            # Shell
-            (self + "/modules/home-manager/shell/starship.nix")
-            (self + "/modules/home-manager/shell/bash.nix")
-            (self + "/modules/home-manager/shell/fish.nix")
+            # Shells
+            (self + "/modules/home-manager/shells/starship.nix")
+            (self + "/modules/home-manager/shells/bash.nix")
+            (self + "/modules/home-manager/shells/fish.nix")
 
-            # Editor
-            (self + "/modules/home-manager/editor/nvim.nix")
+            # Editors
+            (self + "/modules/home-manager/editors/nvim.nix")
 
             # Desktop
             (self + "/modules/home-manager/desktop/hyprland.nix")
