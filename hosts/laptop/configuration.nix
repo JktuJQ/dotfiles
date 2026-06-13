@@ -5,12 +5,19 @@ rec {
         ./hardware_configuration.nix
 
         # NixOS common modules
-        (self + "/modules/nixos/user.nix")
         (self + "/modules/nixos/boot.nix")
+
         (self + "/modules/nixos/locale.nix")
         (self + "/modules/nixos/fonts.nix")
+
+        (self + "/modules/nixos/user.nix")
         (self + "/modules/nixos/networking.nix")
+
         (self + "/modules/nixos/services/openssh.nix")
+        (self + "/modules/nixos/services/dbus.nix")
+
+        (self + "/modules/nixos/desktop/xdg.nix")
+        (self + "/modules/nixos/desktop/hyprland.nix")
 
         # Nix packages
         homeManagerModule
@@ -38,7 +45,7 @@ rec {
             (self + "/modules/home-manager/editor/nvim.nix")
 
             # Desktop
-            (self + "/modules/home-manager/desktop/dconf.nix")
+            (self + "/modules/home-manager/desktop/hyprland.nix")
         ];
 
         home.username = my.user.name;
