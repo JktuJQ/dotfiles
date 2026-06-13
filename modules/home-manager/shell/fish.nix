@@ -55,9 +55,6 @@
             fdf = "fd --type f";
             fdd = "fd --type d";
             fzfr = "fzf --height 40% --border --reverse --preview 'bat --style=plain --color=always {}'";
-
-            rebuild = "sudo nixos-rebuild switch --flake ${dotfilesDir}#nixos";
-            update = "nix flake update --flake ${dotfilesDir} && rebuild";
         };
         interactiveShellInit = ''
             set fish_greeting
