@@ -31,5 +31,8 @@ in {
         };
     };
 
+    stylix.fonts.sizes.terminal = 18;
+    stylix.opacity.terminal = 0.80;
+
     home.sessionVariables.TERMINAL = "alacritty";
 }

@@ -28,6 +28,7 @@ rec {
     home-manager.users.${my.user.name} = { config, pkgs, ... }: {
         _module.args = {
             self = self;
+            username = my.user.name;
             dotfilesDir = "${my.user.homeDir}/dotfiles";
         };
 
@@ -52,6 +53,9 @@ rec {
             # Desktop
             (self + "/modules/home-manager/desktop/uwsm.nix")
             (self + "/modules/home-manager/desktop/hyprland.nix")
+
+            # Browsers
+            (self + "/modules/home-manager/browsers/firefox.nix")
         ];
 
         home.username = my.user.name;
@@ -66,9 +70,7 @@ rec {
                 package = pkgs.nerd-fonts.jetbrains-mono;
                 name = "JetBrainsMono Nerd Font";
             };
-            sizes.terminal = 18;
         };
-        opacity.terminal = 0.80;
         autoEnable = true;
     };
 
