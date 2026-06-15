@@ -1,78 +1,12 @@
-{ config, pkgs, self, homeManagerModule, stylixModule, ... }:
-rec {
+{ config, pkgs, self, ... }:
+{
     imports = [
-        # Hardware configuration
         ./hardware_configuration.nix
-
-        # NixOS common modules
-        (self + "/modules/nixos/boot.nix")
-
-        (self + "/modules/nixos/locale.nix")
-
-        (self + "/modules/nixos/user.nix")
-        (self + "/modules/nixos/networking.nix")
-
-        (self + "/modules/nixos/services/openssh.nix")
-        (self + "/modules/nixos/services/dbus.nix")
-
-        (self + "/modules/nixos/desktop/xdg.nix")
-        (self + "/modules/nixos/desktop/hyprland.nix")
-
-        # Nix packages
-        homeManagerModule
-        stylixModule
+        ./nixos_configuration.nix
+        
+        ./home-manager_configuration.nix
+        ./stylix_configuration.nix
     ];
-
-    my.user.name = "jktujq";
-    my.user.homeDir = "/home/${my.user.name}";
-    home-manager.users.${my.user.name} = { config, pkgs, ... }: {
-        _module.args = {
-            self = self;
-            username = my.user.name;
-            dotfilesDir = "${my.user.homeDir}/dotfiles";
-        };
-
-        imports = [
-            # CLI
-            (self + "/modules/home-manager/cli/coreutils.nix")
-            (self + "/modules/home-manager/cli/git.nix")
-            (self + "/modules/home-manager/cli/colors.nix")
-            (self + "/modules/home-manager/cli/fastfetch.nix")
-
-            # Shells
-            (self + "/modules/home-manager/shells/starship.nix")
-            (self + "/modules/home-manager/shells/bash.nix")
-            (self + "/modules/home-manager/shells/fish.nix")
-
-            # Terminals
-            (self + "/modules/home-manager/terminals/alacritty.nix")
-
-            # Editors
-            (self + "/modules/home-manager/editors/nvim.nix")
-
-            # Desktop
-            (self + "/modules/home-manager/desktop/uwsm.nix")
-            (self + "/modules/home-manager/desktop/hyprland.nix")
-
-            # Browsers
-            (self + "/modules/home-manager/browsers/firefox.nix")
-        ];
-
-        home.username = my.user.name;
-        home.homeDirectory = my.user.homeDir;
-        home.stateVersion = "26.05";
-    };
-    stylix = {
-        enable = true;
-        base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
-        fonts = {
-            monospace = {
-                package = pkgs.nerd-fonts.jetbrains-mono;
-                name = "JetBrainsMono Nerd Font";
-            };
-        };
-        autoEnable = true;
-    };
 
     system.stateVersion = "26.05";
 }

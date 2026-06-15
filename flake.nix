@@ -24,11 +24,10 @@
                     modules = [ (self + "/hosts/${name}/configuration.nix") ];
                     specialArgs = {
                         inherit self;
-
-                        homeManagerModule = home-manager.nixosModules.home-manager;
-                        stylixModule = stylix.nixosModules.stylix;
-
                         hostName = name;
+
+                        homeManagerModule = home-manager;
+                        stylixModule = stylix;
                     };
                 })
                 (lib.filterAttrs (name: type: type == "directory")
