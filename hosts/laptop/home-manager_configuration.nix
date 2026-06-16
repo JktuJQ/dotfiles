@@ -31,8 +31,9 @@ rec {
             (self + "/modules/home-manager/editors/nvim.nix")
 
             # Desktop
-            (self + "/modules/home-manager/desktop/uwsm.nix")
-            (self + "/modules/home-manager/desktop/hyprland.nix")
+            (self + "/modules/home-manager/desktop/wayland/uwsm.nix")
+            (self + "/modules/home-manager/desktop/wayland/hyprland.nix")
+            (self + "/modules/home-manager/desktop/wayland/awww.nix")
 
             # Browsers
             (self + "/modules/home-manager/browsers/firefox.nix")
