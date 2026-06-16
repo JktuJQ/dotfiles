@@ -6,13 +6,10 @@
             logo = {
                 type = "auto";
                 source = "${dotfilesDir}/assets/NixOs_logo.png";
+                height = 22;
                 padding = {
                     top = 0;
                     right = 3;
-                };
-                color = {
-                    "1" = "#00D1FF";
-                    "2" = "#BD93F9";
                 };
             };
             display = {

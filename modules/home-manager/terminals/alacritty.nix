@@ -1,13 +1,10 @@
-{ config, ... }:
-let
-    stylixPalette = config.lib.stylix.colors;
-in {
+{ pkgs, ... }:
+{
     programs.alacritty = {
         enable = true;
         settings = {
-            env = {
-                TERM = "xterm-256color";
-            };
+            env.TERM = "xterm-256color";
+            shell.program = "${pkgs.fish}/bin/fish";
             window = {
                 padding = {
                     x = 10;

@@ -66,6 +66,16 @@ in
             git_status = {
                 style = "bg:yellow fg:crust";
                 format = "[($all_status$ahead_behind )]($style)";
+                conflicted = "✗";
+                ahead = "↑";
+                behind = "↓";
+                diverged = "↕";
+                untracked = "?";
+                stashed = "$";
+                modified = "!";
+                staged = "+";
+                renamed = "→";
+                deleted = "✘";
             };
             nodejs = {
                 symbol = " ";

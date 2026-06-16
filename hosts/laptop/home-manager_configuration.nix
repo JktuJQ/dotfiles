@@ -24,7 +24,8 @@ rec {
             (self + "/modules/home-manager/shells/fish.nix")
 
             # Terminals
-            (self + "/modules/home-manager/terminals/alacritty.nix")
+            (self + "/modules/home-manager/terminals/kitty.nix")
+            #(self + "/modules/home-manager/terminals/alacritty.nix")
 
             # Editors
             (self + "/modules/home-manager/editors/nvim.nix")
@@ -41,5 +42,6 @@ rec {
         home.homeDirectory = my.user.homeDir;
         home.stateVersion = "26.05";
     };
+    home-manager.backupFileExtension = "backup";
 }
 

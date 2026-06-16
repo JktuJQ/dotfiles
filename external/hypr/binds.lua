@@ -2,7 +2,7 @@ local mainMod = "SUPER"
 
 hl.bind(mainMod .. "+ Q", hl.dsp.window.close())
 hl.bind(mainMod .. "+ F", hl.dsp.window.fullscreen())
-hl.bind(mainMod .. "+ Return", hl.dsp.exec_cmd(os.getenv("TERMINAL")))
+hl.bind(mainMod .. "+ T", hl.dsp.exec_cmd(os.getenv("TERMINAL")))
 hl.bind(mainMod .. "+ B", hl.dsp.exec_cmd(os.getenv("BROWSER")))
 
 for i = 1, 5 do
