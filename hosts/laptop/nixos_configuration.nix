@@ -5,7 +5,6 @@
 
         (self + "/modules/nixos/locale.nix")
 
-        (self + "/modules/nixos/user.nix")
         (self + "/modules/nixos/networking.nix")
 
         (self + "/modules/nixos/services/openssh.nix")

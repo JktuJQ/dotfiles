@@ -1,4 +1,4 @@
-{ username, pkgs, ... }:
+{ config, pkgs, ... }:
 let
     extensionUrl = extId: "https://addons.mozilla.org/firefox/downloads/latest/${extId}/latest.xpi";
 in {
@@ -35,9 +35,9 @@ in {
                 };
             };
         };
-        profiles.${username} = {
+        profiles.${config.home.username} = {
             id = 0;
-            name = username;
+            name = config.home.username;
             isDefault = true;
             settings = {
                 "layout.css.prefers-color-scheme.content-override" = 0;

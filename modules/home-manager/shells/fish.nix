@@ -1,4 +1,4 @@
-{ pkgs, config, dotfilesDir, ... }:
+{ pkgs, config, ... }:
 {
     programs.fish = {
         enable = true;
@@ -66,4 +66,6 @@
             fzf_configure_bindings --directory=\ct --history=\cr --variables=\cv
         '';
     };
+
+    home.sessionVariables.SHELL = "fish";
 }

@@ -1,8 +1,7 @@
 { config, lib, ... }:
 let
     colors = config.lib.stylix.colors;
-in
-{
+in {
     programs.starship = {
         enable = true;
         enableTransience = true;
@@ -71,7 +70,7 @@ in
                 behind = "↓";
                 diverged = "↕";
                 untracked = "?";
-                stashed = "$";
+                stashed = "@";
                 modified = "!";
                 staged = "+";
                 renamed = "→";

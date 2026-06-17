@@ -1,4 +1,4 @@
-{ config, pkgs, dotfilesDir, ... }:
+{ self, pkgs, ... }:
 {
     programs.neovim = {
         enable = true;
@@ -10,8 +10,9 @@
             lua-language-server
         ];
     };
-    xdg.configFile."nvim".source = config.lib.file.mkOutOfStoreSymlink
-        "${dotfilesDir}/external/nvim";
+    xdg.configFile."nvim".source = (self + "/external/nvim");
 
     stylix.targets.neovim.enable = false;
+
+    home.sessionVariables.EDITOR = "nvim";
 }

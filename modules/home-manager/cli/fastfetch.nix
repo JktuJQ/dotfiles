@@ -1,11 +1,11 @@
-{ dotfilesDir, ... }:
+{ self, ... }:
 {
     programs.fastfetch = {
         enable = true;
         settings = {
             logo = {
                 type = "auto";
-                source = "${dotfilesDir}/assets/NixOs_logo.png";
+                source = "${self}/assets/NixOs_logo.png";
                 height = 22;
                 padding = {
                     top = 0;
