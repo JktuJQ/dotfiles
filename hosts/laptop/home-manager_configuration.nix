@@ -26,8 +26,11 @@ let
                     (self + "/modules/home-manager/editors/nvim.nix")
 
                     # Desktop
+                    (self + "/modules/home-manager/desktop/xdg.nix")
+
                     (self + "/modules/home-manager/desktop/wayland/uwsm.nix")
                     (self + "/modules/home-manager/desktop/wayland/hyprland.nix")
+                    (self + "/modules/home-manager/desktop/wayland/hyprshot.nix")
                     (self + "/modules/home-manager/desktop/wayland/waybar.nix")
                     (self + "/modules/home-manager/desktop/wayland/anyrun.nix")
                     (self + "/modules/home-manager/desktop/wayland/mako.nix")
