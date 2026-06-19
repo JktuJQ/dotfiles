@@ -1,10 +1,12 @@
 local mainMod = "SUPER"
 
 hl.bind(mainMod .. " + Q", hl.dsp.window.close())
-hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen())
+hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.fullscreen())
+
 hl.bind(mainMod .. " + T", hl.dsp.exec_cmd(os.getenv("TERMINAL")))
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(os.getenv("BROWSER")))
 hl.bind(mainMod .. " + L", hl.dsp.exec_cmd(os.getenv("LAUNCHER")))
+hl.bind(mainMod .. " + F", hl.dsp.exec_cmd(os.getenv("FILE_MANAGER")))
 
 hl.bind(mainMod .. " + escape", hl.dsp.exec_cmd("hyprlock"))
 

@@ -10,6 +10,7 @@ let
                     # CLI
                     (self + "/modules/home-manager/cli/coreutils.nix")
                     (self + "/modules/home-manager/cli/git.nix")
+                    (self + "/modules/home-manager/cli/yazi.nix")
                     (self + "/modules/home-manager/cli/colors.nix")
                     (self + "/modules/home-manager/cli/fastfetch.nix")
 
@@ -25,6 +26,12 @@ let
                     # Editors
                     (self + "/modules/home-manager/editors/nvim.nix")
 
+                    # File managers
+                    (self + "/modules/home-manager/file_managers/thunar.nix")
+
+                    # Browsers
+                    (self + "/modules/home-manager/browsers/firefox.nix")
+
                     # Desktop
                     (self + "/modules/home-manager/desktop/xdg.nix")
                     
@@ -39,9 +46,6 @@ let
                     (self + "/modules/home-manager/desktop/wayland/anyrun.nix")
                     (self + "/modules/home-manager/desktop/wayland/mako.nix")
                     (self + "/modules/home-manager/desktop/wayland/awww.nix")
-
-                    # Browsers
-                    (self + "/modules/home-manager/browsers/firefox.nix")
                 ];
                 home.sessionVariables = {
                     SHELL = lib.mkForce "fish";
@@ -49,6 +53,7 @@ let
                     # EDITOR = "nvim";
                     # BROWSER = "firefox";
                     # LAUNCHER = "anyrun"
+                    # FILE_MANAGER = "anyrun"
                 };
             };
         };
