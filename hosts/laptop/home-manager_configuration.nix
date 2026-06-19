@@ -30,6 +30,7 @@ let
                     (self + "/modules/home-manager/desktop/wayland/hyprland.nix")
                     (self + "/modules/home-manager/desktop/wayland/waybar.nix")
                     (self + "/modules/home-manager/desktop/wayland/anyrun.nix")
+                    (self + "/modules/home-manager/desktop/wayland/mako.nix")
                     (self + "/modules/home-manager/desktop/wayland/awww.nix")
 
                     # Browsers
