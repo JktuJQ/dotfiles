@@ -32,6 +32,8 @@ let
 
                     (self + "/modules/home-manager/desktop/wayland/uwsm.nix")
                     (self + "/modules/home-manager/desktop/wayland/hyprland.nix")
+                    (self + "/modules/home-manager/desktop/wayland/hypridle.nix")
+                    (self + "/modules/home-manager/desktop/wayland/hyprlock.nix")
                     (self + "/modules/home-manager/desktop/wayland/hyprshot.nix")
                     (self + "/modules/home-manager/desktop/wayland/waybar.nix")
                     (self + "/modules/home-manager/desktop/wayland/anyrun.nix")

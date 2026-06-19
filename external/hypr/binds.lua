@@ -6,7 +6,10 @@ hl.bind(mainMod .. " + T", hl.dsp.exec_cmd(os.getenv("TERMINAL")))
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(os.getenv("BROWSER")))
 hl.bind(mainMod .. " + L", hl.dsp.exec_cmd(os.getenv("LAUNCHER")))
 
+hl.bind(mainMod .. " + escape", hl.dsp.exec_cmd("hyprlock"))
+
 hl.bind("Print", hl.dsp.exec_cmd("hyprshot -m output --filename '%Y-%m-%d_%H-%M-%S.png'"))
+
 hl.bind(mainMod .. " + Print", hl.dsp.exec_cmd("hyprshot -m window --filename '%Y-%m-%d_%H-%M-%S.png'"))
 hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd("hyprshot -m region --clipboard-only --freeze"))
 

@@ -16,5 +16,6 @@
 
         (self + "/modules/nixos/desktop/xdg.nix")
         (self + "/modules/nixos/desktop/hyprland.nix")
+        (self + "/modules/nixos/desktop/hyprlock.nix")
     ];
 }
