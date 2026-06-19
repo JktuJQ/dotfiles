@@ -3,7 +3,7 @@ let
     allUsers = {
         jktujq = {
             systemSettings = {
-                extraGroups = [ "wheel" "networkmanager" ];
+                extraGroups = [ "wheel" "audio" "video" "networkmanager" ];
             };
             homeSettings = {
                 imports = [
@@ -27,6 +27,8 @@ let
 
                     # Desktop
                     (self + "/modules/home-manager/desktop/xdg.nix")
+                    
+                    (self + "/modules/home-manager/desktop/media.nix")
 
                     (self + "/modules/home-manager/desktop/wayland/uwsm.nix")
                     (self + "/modules/home-manager/desktop/wayland/hyprland.nix")

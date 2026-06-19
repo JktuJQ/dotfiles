@@ -5,10 +5,14 @@
 
         (self + "/modules/nixos/locale.nix")
 
-        (self + "/modules/nixos/networking.nix")
+        (self + "/modules/nixos/battery.nix")
 
-        (self + "/modules/nixos/services/openssh.nix")
-        (self + "/modules/nixos/services/dbus.nix")
+        (self + "/modules/nixos/audio.nix")
+        (self + "/modules/nixos/video.nix")
+
+        (self + "/modules/nixos/networking.nix")
+        (self + "/modules/nixos/openssh.nix")
+        (self + "/modules/nixos/dbus.nix")
 
         (self + "/modules/nixos/desktop/xdg.nix")
         (self + "/modules/nixos/desktop/hyprland.nix")
