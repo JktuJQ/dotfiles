@@ -15,7 +15,8 @@
         (self + "/modules/nixos/dbus.nix")
 
         (self + "/modules/nixos/desktop/xdg.nix")
-        (self + "/modules/nixos/desktop/hyprland.nix")
-        (self + "/modules/nixos/desktop/hyprlock.nix")
+        (self + "/modules/nixos/desktop/wayland/regreet.nix")
+        (self + "/modules/nixos/desktop/wayland/hyprland.nix")
+        (self + "/modules/nixos/desktop/wayland/hyprlock.nix")
     ];
 }
