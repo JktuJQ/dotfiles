@@ -27,6 +27,7 @@
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
       lib = nixpkgs.lib;
+      functions = import ./functions { inherit lib; };
     in
     {
       formatter.${system} = pkgs.nixfmt-tree;
@@ -39,6 +40,8 @@
           specialArgs = {
             inherit self;
             hostName = name;
+
+            functions = functions;
 
             homeManagerModule = home-manager;
             stylixModule = stylix;
