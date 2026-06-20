@@ -4,6 +4,8 @@ let
 in
 {
   imports = [
+    (importPrefix + "/nix.nix")
+
     (importPrefix + "/boot.nix")
 
     (importPrefix + "/locale.nix")
@@ -14,6 +16,7 @@ in
     (importPrefix + "/video.nix")
 
     (importPrefix + "/networking.nix")
+    (importPrefix + "/bluetooth.nix")
     (importPrefix + "/openssh.nix")
     (importPrefix + "/dbus.nix")
 

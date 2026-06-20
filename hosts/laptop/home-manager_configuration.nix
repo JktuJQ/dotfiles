@@ -44,12 +44,14 @@ let
           (importPrefix + "/desktop/wayland/uwsm.nix")
 
           (importPrefix + "/desktop/wayland/compositors/hyprland/hyprland.nix")
-          (importPrefix + "/desktop/wayland/lockers/hypridle.nix")
-          (importPrefix + "/desktop/wayland/lockers/hyprlock.nix")
+          (importPrefix + "/desktop/wayland/utils/wlogout.nix")
+          (importPrefix + "/desktop/wayland/utils/hypridle.nix")
+          (importPrefix + "/desktop/wayland/utils/hyprlock.nix")
           (importPrefix + "/desktop/wayland/utils/hyprshot.nix")
           (importPrefix + "/desktop/wayland/ui/waybar.nix")
           (importPrefix + "/desktop/wayland/launchers/anyrun.nix")
-          (importPrefix + "/desktop/wayland/notifications/mako.nix")
+          #(importPrefix + "/desktop/wayland/notifications/mako.nix")
+          (importPrefix + "/desktop/wayland/notifications/swaync.nix")
           (importPrefix + "/desktop/wayland/wallpapers/hyprpaper.nix")
           #(importPrefix + "/desktop/wayland/wallpapers/awww.nix")
         ];

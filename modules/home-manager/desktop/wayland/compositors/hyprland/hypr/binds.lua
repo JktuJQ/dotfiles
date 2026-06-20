@@ -9,6 +9,7 @@ hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd(os.getenv("LAUNCHER")))
 hl.bind(mainMod .. " + F", hl.dsp.exec_cmd(os.getenv("FILE_MANAGER")))
 
 hl.bind(mainMod .. " + escape", hl.dsp.exec_cmd("hyprlock"))
+hl.bind(mainMod .. " + SHIFT + escape", hl.dsp.exec_cmd("wlogout"))
 
 hl.bind("Print", hl.dsp.exec_cmd("hyprshot -m output --filename '%Y-%m-%d_%H-%M-%S.png'"))
 
