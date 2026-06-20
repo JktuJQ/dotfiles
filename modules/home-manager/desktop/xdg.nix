@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 {
-    xdg.userDirs = {
-        enable = true;
-        createDirectories = true;
-    };
+  xdg.userDirs = {
+    enable = true;
+    createDirectories = true;
+  };
 }

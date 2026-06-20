@@ -1,22 +1,25 @@
 { self, ... }:
+let
+  importPrefix = self + "/modules/nixos";
+in
 {
-    imports = [
-        (self + "/modules/nixos/boot.nix")
+  imports = [
+    (importPrefix + "/boot.nix")
 
-        (self + "/modules/nixos/locale.nix")
+    (importPrefix + "/locale.nix")
 
-        (self + "/modules/nixos/battery.nix")
+    (importPrefix + "/battery.nix")
 
-        (self + "/modules/nixos/audio.nix")
-        (self + "/modules/nixos/video.nix")
+    (importPrefix + "/audio.nix")
+    (importPrefix + "/video.nix")
 
-        (self + "/modules/nixos/networking.nix")
-        (self + "/modules/nixos/openssh.nix")
-        (self + "/modules/nixos/dbus.nix")
+    (importPrefix + "/networking.nix")
+    (importPrefix + "/openssh.nix")
+    (importPrefix + "/dbus.nix")
 
-        (self + "/modules/nixos/desktop/xdg.nix")
-        (self + "/modules/nixos/desktop/wayland/regreet.nix")
-        (self + "/modules/nixos/desktop/wayland/hyprland.nix")
-        (self + "/modules/nixos/desktop/wayland/hyprlock.nix")
-    ];
+    (importPrefix + "/desktop/xdg.nix")
+    (importPrefix + "/desktop/wayland/regreet.nix")
+    (importPrefix + "/desktop/wayland/hyprland.nix")
+    (importPrefix + "/desktop/wayland/hyprlock.nix")
+  ];
 }

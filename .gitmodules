@@ -1,3 +1,3 @@
-[submodule "external/nvim"]
-	path = external/nvim
+[submodule "modules/home-manager/applications/editors/neovim/nvim"]
+	path = modules/home-manager/applications/editors/neovim/nvim
 	url = git@github.com:JktuJQ/nvim
