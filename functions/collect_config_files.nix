@@ -1,11 +1,7 @@
 { lib }:
 let
-  collectConfigFiles =
-    {
-      path,
-      prefix,
-      extra ? { },
-    }:
+  collectFilesRec =
+    { path, prefix }:
     let
       entries = builtins.readDir path;
       processEntry =
@@ -15,10 +11,9 @@ let
           targetName = prefix + "/${name}";
         in
         if type == "directory" then
-          collectConfigFiles {
+          collectFilesRec {
             path = fullPath;
             prefix = targetName;
-            extra = extra;
           }
         else if type == "regular" then
           [
@@ -31,13 +26,23 @@ let
           ]
         else
           [ ];
-      files = builtins.foldl' (acc: name: acc ++ (processEntry name entries.${name})) [ ] (
-        builtins.attrNames entries
-      );
-      attrs = builtins.listToAttrs files;
     in
-    attrs // extra;
+    builtins.foldl' (acc: name: acc ++ (processEntry name entries.${name})) [ ] (
+      builtins.attrNames entries
+    );
 in
 {
-  inherit collectConfigFiles;
+  collectConfigFiles =
+    {
+      path,
+      prefix,
+      extra ? { },
+    }:
+    let
+      allFiles = collectFilesRec {
+        path = path;
+        prefix = prefix;
+      };
+    in
+    builtins.listToAttrs allFiles // extra;
 }
