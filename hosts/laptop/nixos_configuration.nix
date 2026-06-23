@@ -12,6 +12,7 @@ in
 
     (importPrefix + "/battery.nix")
 
+    (importPrefix + "/playerctl.nix")
     (importPrefix + "/audio.nix")
     (importPrefix + "/video.nix")
 

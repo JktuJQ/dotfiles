@@ -1,6 +1,7 @@
 {
   homeManagerModule,
   self,
+  hostName,
   pkgs,
   lib,
   functions,
@@ -64,12 +65,14 @@ let
           # LAUNCHER = "anyrun"
           # FILE_MANAGER = "thunar"
         };
+        dotfilesDirFromUser = "dotfiles";
       };
     };
   };
 in
 {
   imports = [ homeManagerModule.nixosModules.home-manager ];
+  environment.systemPackages = with pkgs; [ home-manager ];
 
   users.users = builtins.mapAttrs (
     name: cfg:
@@ -86,7 +89,8 @@ in
     lib.mkMerge [
       {
         _module.args = {
-          inherit self;
+          inherit self hostName;
+          dotfilesDir = "/home/${name}/${cfg.homeSettings.dotfilesDirFromUser}";
         };
 
         home = {
@@ -95,7 +99,7 @@ in
           stateVersion = "26.05";
         };
       }
-      cfg.homeSettings
+      (removeAttrs cfg.homeSettings [ "dotfilesDirFromUser" ])
     ]
   ) allUsers;
 

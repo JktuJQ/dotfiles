@@ -11,9 +11,9 @@ hl.bind(mainMod .. " + F", hl.dsp.exec_cmd(os.getenv("FILE_MANAGER")))
 hl.bind(mainMod .. " + escape", hl.dsp.exec_cmd("hyprlock"))
 hl.bind(mainMod .. " + SHIFT + escape", hl.dsp.exec_cmd("wlogout"))
 
-hl.bind("Print", hl.dsp.exec_cmd("hyprshot -m output --filename '%Y-%m-%d_%H-%M-%S.png'"))
+hl.bind("Print", hl.dsp.exec_cmd("hyprshot -m output"))
 
-hl.bind(mainMod .. " + Print", hl.dsp.exec_cmd("hyprshot -m window --filename '%Y-%m-%d_%H-%M-%S.png'"))
+hl.bind(mainMod .. " + Print", hl.dsp.exec_cmd("hyprshot -m window"))
 hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd("hyprshot -m region --clipboard-only --freeze"))
 
 hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+"), { repeating = true })
