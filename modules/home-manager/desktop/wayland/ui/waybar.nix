@@ -113,12 +113,19 @@ in
 
         "hyprland/workspaces" = {
           persistent-workspaces = {
-            "*" = [
+            "eDP-1" = [
               1
               2
               3
               4
               5
+            ];
+            "HDMI-A-1" = [
+              6
+              7
+              8
+              9
+              10
             ];
           };
           format = "{icon}{windows}";
@@ -192,10 +199,12 @@ in
         };
 
         "pulseaudio" = {
-          format = "{icon}   {format_source}";
-          format-muted = "󰖁   {format_source}";
-          format-source = "&#8201;";
-          format-source-muted = "&#8201;";
+          format = "{icon}  &#8201;{format_source}";
+          format-muted = "󰖁  &#8201;{format_source}";
+          #format-source = "&#8201;";
+          #format-source-muted = "&#8194;";
+          format-source = "󰍬";
+          format-source-muted = "󰍭&#8202;";
           format-icons = {
             default = [
               ""
@@ -408,4 +417,6 @@ in
       }
     '';
   };
+
+  stylix.targets.waybar.enable = false;
 }

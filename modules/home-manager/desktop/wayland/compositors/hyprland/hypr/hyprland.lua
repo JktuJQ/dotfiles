@@ -1,3 +1,4 @@
+require("colors")
 require("settings")
 require("animations")
 require("monitors")

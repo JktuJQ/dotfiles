@@ -36,7 +36,7 @@
       };
       sizes.terminal = 18;
     };
-    opacity.terminal = 0.85;
+    opacity.terminal = 0.9;
 
     autoEnable = true;
   };
