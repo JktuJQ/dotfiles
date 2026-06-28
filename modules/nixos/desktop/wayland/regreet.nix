@@ -1,4 +1,3 @@
-{ config, pkgs, ... }:
 let
   greeterUser = "greeter";
 in
@@ -13,14 +12,13 @@ in
 
   security.pam.services.greetd = { };
 
-  services.greetd = {
+  services.greetd.enable = true;
+  programs.regreet = {
     enable = true;
-    settings = {
-      default_session = {
-        user = greeterUser;
-      };
-    };
+    cageArgs = [
+      "-s"
+      "-m"
+      "last"
+    ];
   };
-
-  programs.regreet.enable = true;
 }

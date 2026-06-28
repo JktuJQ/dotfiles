@@ -36,6 +36,12 @@
       };
       sizes.terminal = 18;
     };
+    icons = {
+      enable = true;
+      package = pkgs.papirus-icon-theme;
+      dark = "Papirus-Dark";
+      light = "Papirus-Light";
+    };
     opacity.terminal = 0.9;
 
     autoEnable = true;
