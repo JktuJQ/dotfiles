@@ -1,244 +1,107 @@
-{ config, pkgs, ... }:
 {
-  home.packages = with pkgs; [
-    libnotify
-  ];
+  config,
+  pkgs,
+  ...
+}:
+
+let
+  colors = config.lib.stylix.colors;
+in
+{
+  home.packages = with pkgs; [ libnotify ];
 
   services.swaync = {
     enable = true;
+
     settings = {
-      positionX = "right";
+      positionX = "left";
       positionY = "top";
-      layer = "overlay";
-      control-center-layer = "overlay";
-      layer-shell = true;
-      cssPriority = "user";
-      control-center-margin-top = 10;
-      control-center-margin-bottom = 10;
-      control-center-margin-right = 10;
-      control-center-margin-left = 10;
-      notification-2fa-action = true;
-      notification-inline-replies = false;
-      notification-window-geometry = {
-        width = 360;
-        height = "auto";
-      };
-      control-center-geometry = {
-        width = 420;
-        height = "auto";
-      };
-      widgets = [
-        "title"
-        "dnd"
-        "label"
-        "mpris"
-        "buttons-grid"
-        "notifications"
-      ];
+      control-center-position = "top-left";
+      notification-position = "top-right";
+      layer = "top";
+      control-center-layer = "top";
+      control-center-margin-top = 5;
+      control-center-margin-bottom = 5;
+      control-center-margin-right = 5;
+      control-center-margin-left = 5;
+      control-center-width = 400;
+      control-center-height = 250;
+      fit-to-screen = false;
+
+      widgets = [ "mpris" ];
+
       widget-config = {
-        title = {
-          text = "Notifications";
-          clear-all-button = true;
-          button-text = "Clear All";
-        };
-        dnd = {
-          text = "Do Not Disturb";
-        };
-        label = {
-          text = "No notifications";
-        };
-        buttons-grid = {
-          actions = [
-            {
-              label = "󰌾 Lock";
-              command = "hyprlock";
-            }
-            {
-              label = " Power";
-              command = "wlogout";
-            }
-          ];
-        };
         mpris = {
-          image-size = 96;
-          image-radius = 8;
+          image-size = 130;
+          image-radius = 12;
+          blur = false;
+          autohide = false;
         };
       };
     };
+
     style = ''
-      * {
-          all: unset;
+      @define-color bg #${colors.base00};
+      @define-color fg #${colors.base05};
+      @define-color border #${colors.base0E};
+
+      .control-center {
+        background: @bg;
+        border: 2px solid @border;
+        border-radius: 12px;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.4);
       }
 
       .notification-row {
-          padding: 8px;
-          margin: 8px 0;
-          border-radius: 12px;
-          background-color: #${config.lib.stylix.colors.base00}dd;
-          color: #${config.lib.stylix.colors.base05};
+        background: @bg;
+        border: 1px solid @border;
+        border-radius: 12px;
+        margin: 6px 0;
       }
 
-      .notification-row:hover {
-          background-color: #${config.lib.stylix.colors.base01}dd;
+      .mpris {
+        background: transparent;
+        padding: 12px;
       }
 
-      .notification-row .notification-content .summary {
-          font-weight: bold;
-          color: #${config.lib.stylix.colors.base0D};
+      .mpris .image {
+        border-radius: 12px;
       }
 
-      .notification-row .notification-content .body {
-          color: #${config.lib.stylix.colors.base05};
+      .mpris .title {
+        font-size: 1.1em;
+        font-weight: bold;
+        color: @fg;
       }
 
-      .notification-row .notification-content .app-name {
-          color: #${config.lib.stylix.colors.base04};
+      .mpris .artist {
+        color: alpha(@fg, 0.7);
       }
 
-      .notification-row .notification-content .time {
-          color: #${config.lib.stylix.colors.base03};
+      /* Прогресс-бар */
+      .mpris .progress-bar {
+        background: alpha(@fg, 0.2);
+        border-radius: 6px;
+        height: 6px;
+        margin: 8px 0;
       }
 
-      .notification-row .notification-actions {
-          margin-top: 8px;
-          border-top: 1px solid #${config.lib.stylix.colors.base02};
-          padding-top: 8px;
+      .mpris .progress-bar progress {
+        background: @border;
+        border-radius: 6px;
       }
 
-      .notification-row .notification-actions .action-button {
-          background-color: #${config.lib.stylix.colors.base01};
-          color: #${config.lib.stylix.colors.base05};
-          padding: 4px 12px;
-          border-radius: 8px;
-          margin-right: 8px;
+      .mpris .buttons button {
+        background: transparent;
+        color: @fg;
+        font-size: 20px;
+        border: none;
+        padding: 0 10px;
       }
 
-      .notification-row .notification-actions .action-button:hover {
-          background-color: #${config.lib.stylix.colors.base02};
-      }
-
-      .notification-row .close-button {
-          background-color: #${config.lib.stylix.colors.base08};
-          color: #${config.lib.stylix.colors.base00};
-          border-radius: 8px;
-          padding: 2px 8px;
-      }
-
-      .notification-row .close-button:hover {
-          background-color: #${config.lib.stylix.colors.base12};
-      }
-
-      .notification-group .notification-group-header {
-          color: #${config.lib.stylix.colors.base04};
-          font-weight: bold;
-          padding: 4px 0;
-      }
-
-      .notification-group .notification-group-header .count {
-          color: #${config.lib.stylix.colors.base0D};
-      }
-
-      .control-center {
-          background-color: #${config.lib.stylix.colors.base00}ee;
-          color: #${config.lib.stylix.colors.base05};
-          padding: 16px;
-          border-radius: 16px;
-          border: 1px solid #${config.lib.stylix.colors.base02};
-      }
-
-      .control-center .widget-title {
-          color: #${config.lib.stylix.colors.base0D};
-          font-weight: bold;
-          padding: 8px 0;
-      }
-
-      .control-center .widget-title .button {
-          background-color: #${config.lib.stylix.colors.base01};
-          color: #${config.lib.stylix.colors.base05};
-          padding: 4px 12px;
-          border-radius: 8px;
-      }
-
-      .control-center .widget-title .button:hover {
-          background-color: #${config.lib.stylix.colors.base02};
-      }
-
-      .control-center .widget-dnd {
-          padding: 8px 0;
-      }
-
-      .control-center .widget-dnd .switch {
-          background-color: #${config.lib.stylix.colors.base02};
-          border-radius: 12px;
-          width: 40px;
-          height: 20px;
-      }
-
-      .control-center .widget-dnd .switch .slider {
-          background-color: #${config.lib.stylix.colors.base05};
-          border-radius: 12px;
-          width: 16px;
-          height: 16px;
-          margin: 2px;
-      }
-
-      .control-center .widget-dnd .switch.on {
-          background-color: #${config.lib.stylix.colors.base0D};
-      }
-
-      .control-center .widget-dnd .switch.on .slider {
-          background-color: #${config.lib.stylix.colors.base00};
-      }
-
-      .control-center .widget-label {
-          padding: 8px 0;
-          color: #${config.lib.stylix.colors.base04};
-      }
-
-      .control-center .widget-buttons-grid {
-          padding: 8px 0;
-      }
-
-      .control-center .widget-buttons-grid .button {
-          background-color: #${config.lib.stylix.colors.base01};
-          color: #${config.lib.stylix.colors.base05};
-          padding: 8px 16px;
-          border-radius: 8px;
-          margin: 4px;
-      }
-
-      .control-center .widget-buttons-grid .button:hover {
-          background-color: #${config.lib.stylix.colors.base02};
-      }
-
-      .control-center .widget-mpris {
-          padding: 8px 0;
-      }
-
-      .control-center .widget-mpris .box {
-          background-color: #${config.lib.stylix.colors.base01};
-          border-radius: 8px;
-          padding: 8px;
-      }
-
-      .control-center .widget-mpris .box .image {
-          border-radius: 8px;
-      }
-
-      .control-center .widget-mpris .box .label {
-          color: #${config.lib.stylix.colors.base05};
-      }
-
-      .control-center .widget-mpris .box .button {
-          background-color: transparent;
-          color: #${config.lib.stylix.colors.base05};
-      }
-
-      .control-center .widget-mpris .box .button:hover {
-          color: #${config.lib.stylix.colors.base0D};
+      .mpris .buttons button:hover {
+        color: @border;
       }
     '';
   };
-
-  stylix.targets.swaync.enable = false;
 }

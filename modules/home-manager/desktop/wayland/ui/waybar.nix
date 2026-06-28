@@ -23,11 +23,12 @@ in
         modules-left = [
           "custom/nixlogo"
           "group/system"
-          "hyprland/language"
         ];
 
         modules-center = [
+          "hyprland/language"
           "hyprland/workspaces"
+          "custom/notifications"
         ];
 
         modules-right = [
@@ -110,7 +111,6 @@ in
           format = "{short}";
           tooltip-format = "Layout: {long}";
         };
-
         "hyprland/workspaces" = {
           persistent-workspaces = {
             "eDP-1" = [
@@ -148,6 +148,12 @@ in
             "class<vlc>" = "󰕼&#8201;";
             "class<thunar>" = "&#8201;";
           };
+        };
+        "custom/notifications" = {
+          exec = "makoctl mode | grep -q 'do-not-disturb' && echo ' ' || echo '&#8201;&#8201;&#8202;&#8202;'";
+          interval = 5;
+          on-click = "if [ \"$(makoctl mode)\" = \"do-not-disturb\" ]; then makoctl mode -r do-not-disturb; else makoctl mode -s do-not-disturb; fi";
+          tooltip = false;
         };
 
         "group/mpris_drawer" = {
@@ -269,11 +275,11 @@ in
           calendar = {
             mode = "month";
             format = {
-              months = "<span color='#${colors.base0E}'><b>{}</b></span>";
+              months = "<span color='#${colors.base0D}'><b>{}</b></span>";
               days = "<span color='#${colors.base05}'>{}</span>";
               weeks = "<span color='#${colors.base0C}'>W{}</span>";
               weekdays = "<span color='#${colors.base0A}'><b>{}</b></span>";
-              today = "<span color='#${colors.base01}' background='#${colors.base0E}'><b>{}</b></span>";
+              today = "<span color='#${colors.base01}' background='#${colors.base0D}'><b>{}</b></span>";
             };
           };
         };
@@ -284,7 +290,7 @@ in
       @define-color bg #${colors.base00};
       @define-color fg #${colors.base05};
       @define-color text-sec #${colors.base07};
-      @define-color accent #${colors.base0E};
+      @define-color accent #${colors.base0D};
 
       @define-color nix-blue #7ebae4;
 
@@ -379,7 +385,6 @@ in
       #workspaces {
         padding: 4px 6px;
       }
-
       #workspaces button {
         color: @text-sec;
         border-radius: 15px;
@@ -387,7 +392,6 @@ in
         min-height: 24px;
         transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.68);
       }
-
       #workspaces button.active {
         background-color: @accent;
         color: @bg;

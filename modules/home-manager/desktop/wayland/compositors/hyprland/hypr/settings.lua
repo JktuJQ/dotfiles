@@ -34,5 +34,13 @@ hl.config({
             natural_scroll = true,
             disable_while_typing = true,
         },
+        sensitivity = 0,
     },
 })
+
+hl.device({
+    name = "logitech-g102-lightsync-gaming-mouse",
+    sensitivity = -0.2,
+    accel_profile = "flat",
+})
+

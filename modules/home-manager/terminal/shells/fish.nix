@@ -75,7 +75,7 @@
       starship init fish | source
 
       zoxide init fish | source
-      fzf_configure_bindings --directory=\ct --history=\cr --variables=\cv
+      fzf_configure_bindings --directory=\cd --history=\ch --variables=\cr
     '';
   };
 

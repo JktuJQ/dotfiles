@@ -52,8 +52,8 @@ let
           (importPrefix + "/desktop/wayland/utils/hyprshot.nix")
           (importPrefix + "/desktop/wayland/ui/waybar.nix")
           (importPrefix + "/desktop/wayland/launchers/anyrun.nix")
-          #(importPrefix + "/desktop/wayland/notifications/mako.nix")
-          (importPrefix + "/desktop/wayland/notifications/swaync.nix")
+          (importPrefix + "/desktop/wayland/notifications/mako.nix")
+          #(importPrefix + "/desktop/wayland/notifications/swaync.nix")
           (importPrefix + "/desktop/wayland/wallpapers/hyprpaper.nix")
           #(importPrefix + "/desktop/wayland/wallpapers/awww.nix")
         ];
@@ -65,7 +65,6 @@ let
           # LAUNCHER = "anyrun"
           # FILE_MANAGER = "thunar"
         };
-        dotfilesDirFromUser = "dotfiles";
       };
     };
   };
@@ -90,7 +89,6 @@ in
       {
         _module.args = {
           inherit self hostName;
-          dotfilesDir = "/home/${name}/${cfg.homeSettings.dotfilesDirFromUser}";
         };
 
         home = {
@@ -99,7 +97,7 @@ in
           stateVersion = "26.05";
         };
       }
-      (removeAttrs cfg.homeSettings [ "dotfilesDirFromUser" ])
+      cfg.homeSettings
     ]
   ) allUsers;
 

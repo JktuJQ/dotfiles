@@ -11,6 +11,10 @@
       cursor_shape = "block";
       cursor_blink_interval = 0;
     };
+    keybindings = {
+      "ctrl+c" = "copy_or_interrupt";
+      "ctrl+v" = "paste_from_clipboard";
+    };
   };
 
   home.sessionVariables.TERMINAL = "kitty";
