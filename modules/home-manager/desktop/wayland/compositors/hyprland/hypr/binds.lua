@@ -54,8 +54,7 @@ hl.bind(key({mainMod, "B"}), hl.dsp.exec_cmd(os.getenv("BROWSER")))
 hl.bind(key({mainMod, "SPACE"}), hl.dsp.exec_cmd(os.getenv("LAUNCHER")))
 hl.bind(key({mainMod, "E"}), hl.dsp.exec_cmd(os.getenv("FILE_MANAGER")))
 
-hl.bind(key({mainMod, "escape"}), hl.dsp.exec_cmd("hyprlock"))
-hl.bind(key({mainMod, "SHIFT", "escape"}), hl.dsp.exec_cmd("wlogout"))
+hl.bind(key({mainMod, "escape"}), hl.dsp.exec_cmd("wlogout"))
 hl.bind(key({mainMod, "CTRL", "SHIFT", "ALT", "Q"}), hl.dsp.exec_cmd("loginctl terminate-user " .. os.getenv("USER")))
 
 hl.bind("Print", hl.dsp.exec_cmd("hyprshot -m output"))

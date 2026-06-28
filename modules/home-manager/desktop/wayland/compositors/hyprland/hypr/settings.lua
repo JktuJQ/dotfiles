@@ -38,6 +38,11 @@ hl.config({
     },
 })
 
+hl.layer_rule({
+    match = { namespace = "logout_dialog" },
+    blur = true
+})
+
 hl.device({
     name = "logitech-g102-lightsync-gaming-mouse",
     sensitivity = -0.2,
