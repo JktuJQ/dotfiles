@@ -39,6 +39,11 @@ hl.config({
 })
 
 hl.layer_rule({
+    match = { namespace = "rofi" },
+    blur = true,
+    ignore_alpha = 0.0
+})
+hl.layer_rule({
     match = { namespace = "logout_dialog" },
     blur = true
 })

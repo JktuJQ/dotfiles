@@ -60,6 +60,7 @@ hl.bind(key({mainMod, "CTRL", "SHIFT", "ALT", "Q"}), hl.dsp.exec_cmd("loginctl t
 hl.bind("Print", hl.dsp.exec_cmd("hyprshot -m output"))
 hl.bind(key({mainMod, "Print"}), hl.dsp.exec_cmd("hyprshot -m window"))
 hl.bind(key({mainMod, "SHIFT", "S"}), hl.dsp.exec_cmd("hyprshot -m region --clipboard-only --freeze"))
+hl.bind(key({mainMod, "CTRL", "SHIFT", "S"}), hl.dsp.exec_cmd("hyprshot -m region --freeze"))
 
 hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+"), { repeating = true })
 hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"), { repeating = true })
