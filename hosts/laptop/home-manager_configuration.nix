@@ -66,6 +66,7 @@ let
           # LAUNCHER = "anyrun"
           # FILE_MANAGER = "thunar"
         };
+        home.file.".face".source = (self + "/assets/avatar.png");
       };
     };
   };

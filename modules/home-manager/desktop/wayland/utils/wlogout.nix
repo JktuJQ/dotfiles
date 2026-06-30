@@ -23,25 +23,25 @@ in
         label = "lock";
         action = "loginctl lock-session";
         text = "Lock";
-        keybind = "l";
+        keybind = "1";
       }
       {
         label = "logout";
-        action = "hyprctl dispatch exit";
+        action = "uwsm stop";
         text = "Logout";
-        keybind = "e";
+        keybind = "2";
       }
       {
         label = "reboot";
         action = "systemctl reboot";
         text = "Reboot";
-        keybind = "r";
+        keybind = "3";
       }
       {
         label = "shutdown";
         action = "systemctl poweroff";
         text = "Shutdown";
-        keybind = "s";
+        keybind = "4";
       }
     ];
 

@@ -19,6 +19,7 @@ in
     (importPrefix + "/networking.nix")
     (importPrefix + "/bluetooth.nix")
     (importPrefix + "/openssh.nix")
+    (importPrefix + "/seatd.nix")
     (importPrefix + "/dbus.nix")
 
     (importPrefix + "/desktop/xdg.nix")
