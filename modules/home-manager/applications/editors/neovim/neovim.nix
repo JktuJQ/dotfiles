@@ -1,4 +1,5 @@
 { self, pkgs, ... }:
+
 {
   programs.neovim = {
     enable = true;
