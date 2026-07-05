@@ -1,15 +1,8 @@
-{
-  config,
-  pkgs,
-  ...
-}:
-
+{ config, ... }:
 let
   colors = config.lib.stylix.colors;
 in
 {
-  home.packages = with pkgs; [ libnotify ];
-
   services.swaync = {
     enable = true;
 

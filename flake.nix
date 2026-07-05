@@ -3,50 +3,39 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
+
     home-manager = {
       url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     stylix = {
       url = "github:nix-community/stylix/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    self.submodules = true;
   };
 
   outputs =
-    {
-      self,
-      nixpkgs,
-      home-manager,
-      stylix,
-      ...
-    }:
+    inputs:
     let
-      system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
-      lib = nixpkgs.lib;
-      functions = import ./functions { inherit lib; };
+      lib = inputs.nixpkgs.lib;
     in
     {
-      formatter.${system} = pkgs.nixfmt-tree;
-
-      nixosConfigurations = builtins.mapAttrs (
-        name: _:
-        lib.nixosSystem {
-          inherit system;
-          modules = [ (self + "/hosts/${name}/configuration.nix") ];
-          specialArgs = {
-            inherit self;
-            hostName = name;
-
-            functions = functions;
-
-            homeManagerModule = home-manager;
-            stylixModule = stylix;
+      nixosConfigurations = {
+        laptop =
+          let
+            system = "x86_64-linux";
+            hostName = "laptop";
+          in
+          lib.nixosSystem {
+            inherit system;
+            modules = [ ./hosts/laptop/configuration.nix ];
+            specialArgs = {
+              self = inputs.self;
+              hostName = hostName;
+              inherit inputs;
+            };
           };
-        }
-      ) (lib.filterAttrs (name: type: type == "directory") (builtins.readDir (self + "/hosts")));
+      };
     };
 }

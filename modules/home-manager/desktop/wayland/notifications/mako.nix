@@ -1,16 +1,9 @@
-{
-  config,
-  pkgs,
-  ...
-}:
-
+{ config, ... }:
 let
   palette = config.lib.stylix.colors;
   fontName = config.stylix.fonts.monospace.name;
 in
 {
-  home.packages = with pkgs; [ libnotify ];
-
   services.mako = {
     enable = true;
 

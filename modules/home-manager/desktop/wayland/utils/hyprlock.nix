@@ -1,5 +1,4 @@
-{ config, ... }:
-let
+{ config, ... }: let
   colors = config.lib.stylix.colors;
   font = config.stylix.fonts.monospace.name;
   wallpaper = config.stylix.image;
@@ -95,7 +94,7 @@ in
           valign = "top";
         }
         {
-          text = "cmd[update:1] date +\"%b\"";
+          text = "cmd[update:1000] date +\"%b\"";
           color = "rgb(${colors.base05})";
           font_size = 16;
           font_family = font;
@@ -113,7 +112,7 @@ in
           valign = "top";
         }
         {
-          text = "cmd[update:1] date +\"%Y\"";
+          text = "cmd[update:1000] date +\"%Y\"";
           color = "rgb(${colors.base05})";
           font_size = 16;
           font_family = font;
@@ -125,7 +124,7 @@ in
 
       input-field = {
         size = "200, 30";
-        outline_thickness = 0; # убираем обводку, если не нужна
+        outline_thickness = 0;
         inner_color = "rgba(0,0,0,0)";
         outer_color = "rgba(0,0,0,0)";
         font_color = "rgb(${colors.base05})";

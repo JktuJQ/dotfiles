@@ -6,25 +6,23 @@ in
   imports = [
     (importPrefix + "/nix.nix")
 
-    (importPrefix + "/boot.nix")
+    (importPrefix + "/system/boot.nix")
+    (importPrefix + "/system/locale.nix")
+    (importPrefix + "/system/dbus.nix")
 
-    (importPrefix + "/locale.nix")
+    (importPrefix + "/hardware/battery.nix")
 
-    (importPrefix + "/battery.nix")
+    (importPrefix + "/peripherals/seatd.nix")
+    (importPrefix + "/peripherals/audio.nix")
+    (importPrefix + "/peripherals/video.nix")
 
-    (importPrefix + "/playerctl.nix")
-    (importPrefix + "/audio.nix")
-    (importPrefix + "/video.nix")
-
-    (importPrefix + "/networking.nix")
-    (importPrefix + "/bluetooth.nix")
-    (importPrefix + "/openssh.nix")
-    (importPrefix + "/seatd.nix")
-    (importPrefix + "/dbus.nix")
+    (importPrefix + "/networking/network-manager.nix")
+    (importPrefix + "/networking/bluetooth.nix")
+    (importPrefix + "/networking/openssh.nix")
 
     (importPrefix + "/desktop/xdg.nix")
     (importPrefix + "/desktop/wayland/regreet.nix")
-    (importPrefix + "/desktop/wayland/hyprland.nix")
-    (importPrefix + "/desktop/wayland/hyprlock.nix")
+    (importPrefix + "/desktop/wayland/compositors/hyprland.nix")
+    (importPrefix + "/desktop/wayland/utils/hyprlock.nix")
   ];
 }

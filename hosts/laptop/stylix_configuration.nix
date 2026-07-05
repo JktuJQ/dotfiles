@@ -1,11 +1,11 @@
 {
-  stylixModule,
+  inputs,
   self,
   pkgs,
   ...
 }:
 {
-  imports = [ stylixModule.nixosModules.stylix ];
+  imports = [ inputs.stylix.nixosModules.stylix ];
 
   stylix = {
     enable = true;
