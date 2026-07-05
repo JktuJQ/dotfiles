@@ -17,7 +17,7 @@ in
         "$git_branch"
         "$git_status"
         "[](fg:yellow bg:green)"
-        "$c$rust$golang$nodejs$java$kotlin$haskell$python"
+        "$nix_shell$lua$python$c$cpp$rust$haskell$golang$java$kotlin"
         "[](fg:green bg:sapphire)"
         "[](fg:sapphire bg:lavender)"
         "$time"
@@ -77,46 +77,58 @@ in
         renamed = "→";
         deleted = "✗";
       };
-      nodejs = {
-        symbol = " ";
+
+      nix_shell = {
+        symbol = "  ";
         style = "bg:green";
-        format = "[[ $symbol](fg:crust bg:green)]($style)";
+        format = "[[$symbol](fg:crust bg:green)]($style)";
       };
-      c = {
-        symbol = " ";
+      lua = {
+        symbol = "  ";
         style = "bg:green";
-        format = "[[ $symbol](fg:crust bg:green)]($style)";
-      };
-      rust = {
-        symbol = "󱘗 ";
-        style = "bg:green";
-        format = "[[ $symbol](fg:crust bg:green)]($style)";
-      };
-      golang = {
-        symbol = "󰟓 ";
-        style = "bg:green";
-        format = "[[ $symbol](fg:crust bg:green)]($style)";
-      };
-      java = {
-        symbol = " ";
-        style = "bg:green";
-        format = "[[ $symbol](fg:crust bg:green)]($style)";
-      };
-      kotlin = {
-        symbol = " ";
-        style = "bg:green";
-        format = "[[ $symbol](fg:crust bg:green)]($style)";
-      };
-      haskell = {
-        symbol = " ";
-        style = "bg:green";
-        format = "[[ $symbol](fg:crust bg:green)]($style)";
+        format = "[[$symbol](fg:crust bg:green)]($style)";
       };
       python = {
-        symbol = " ";
+        symbol = " ";
         style = "bg:green";
-        format = "[[ $symbol( $version)(\\(#$virtualenv\\)) ](fg:crust bg:green)]($style)";
+        format = "[[$symbol( $version)(\\(#$virtualenv\\)) ](fg:crust bg:green)]($style)";
       };
+      c = {
+        symbol = "  ";
+        style = "bg:green";
+        format = "[[$symbol](fg:crust bg:green)]($style)";
+      };
+      cpp = {
+        symbol = "  ";
+        style = "bg:green";
+        format = "[[$symbol](fg:crust bg:green)]($style)";
+      };
+      rust = {
+        symbol = " 󱘗 ";
+        style = "bg:green";
+        format = "[[$symbol](fg:crust bg:green)]($style)";
+      };
+      haskell = {
+        symbol = "  ";
+        style = "bg:green";
+        format = "[[$symbol](fg:crust bg:green)]($style)";
+      };
+      golang = {
+        symbol = " 󰟓 ";
+        style = "bg:green";
+        format = "[[$symbol](fg:crust bg:green)]($style)";
+      };
+      java = {
+        symbol = "  ";
+        style = "bg:green";
+        format = "[[$symbol](fg:crust bg:green)]($style)";
+      };
+      kotlin = {
+        symbol = "  ";
+        style = "bg:green";
+        format = "[[$symbol](fg:crust bg:green)]($style)";
+      };
+
       time = {
         disabled = false;
         time_format = "%R";

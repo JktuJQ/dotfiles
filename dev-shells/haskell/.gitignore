@@ -1,0 +1,10 @@
+# Haskell
+dist/
+dist-newstyle/
+*.hi
+*.o
+*.prof
+*.hp
+*.aux
+*.log
+*.out

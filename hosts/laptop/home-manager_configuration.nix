@@ -21,6 +21,7 @@ let
       };
       homeSettings = {
         imports = [
+          (importPrefix + "/terminal/cli/direnv.nix")
           (importPrefix + "/terminal/cli/coreutils.nix")
           (importPrefix + "/terminal/cli/git.nix")
           (importPrefix + "/terminal/cli/colors.nix")
@@ -68,7 +69,7 @@ let
           #(importPrefix + "/desktop/wayland/wallpapers/awww.nix")
         ];
         home.sessionVariables = {
-          SHELL = lib.mkForce "fish";
+          # SHELL = "fish";
           # TERMINAL = "kitty";
           # EDITOR = "nvim";
           # BROWSER = "firefox";

@@ -1,0 +1,9 @@
+# Lua
+*.lua[co]
+*.so
+*.o
+*.a
+*.luac
+*.rock
+luarocks/
+.rocks/

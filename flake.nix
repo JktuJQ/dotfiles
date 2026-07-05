@@ -2,6 +2,8 @@
   description = "NixOS configuration with home-manager";
 
   inputs = {
+    flake-utils.url = "github:numtide/flake-utils";
+
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
 
     home-manager = {
@@ -37,5 +39,24 @@
             };
           };
       };
-    };
+
+      templates = import ./dev-shells;
+    }
+    // inputs.flake-utils.lib.eachDefaultSystem (
+      system:
+      let
+        pkgs = inputs.nixpkgs.legacyPackages.${system};
+      in
+      {
+        devShells.default = pkgs.mkShell {
+          packages = with pkgs; [
+            nil
+            nixfmt
+            nixpkgs-fmt
+            deadnix
+            statix
+          ];
+        };
+      }
+    );
 }
