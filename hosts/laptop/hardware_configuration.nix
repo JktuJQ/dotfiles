@@ -19,43 +19,44 @@
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
-  fileSystems."/" = {
-    device = "/dev/disk/by-uuid/6dff9ea3-4dfe-4a22-81f4-0a9557945e4b";
-    fsType = "btrfs";
-    options = [
-      "subvol=@"
-      "compress=zstd"
-    ];
-  };
+  fileSystems = lib.mkForce {
+    "/" = {
+      device = "/dev/disk/by-uuid/6dff9ea3-4dfe-4a22-81f4-0a9557945e4b";
+      fsType = "btrfs";
+      options = [
+        "subvol=@"
+        "compress=zstd"
+      ];
+    };
 
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/41F2-463C";
-    fsType = "vfat";
-    options = [
-      "fmask=0022"
-      "dmask=0022"
-    ];
-  };
+    "/boot" = {
+      device = "/dev/disk/by-uuid/41F2-463C";
+      fsType = "vfat";
+      options = [
+        "fmask=0022"
+        "dmask=0022"
+      ];
+    };
 
-  fileSystems."/home" = {
-    device = "/dev/disk/by-uuid/6dff9ea3-4dfe-4a22-81f4-0a9557945e4b";
-    fsType = "btrfs";
-    options = [
-      "subvol=@home"
-      "compress=zstd"
-    ];
-  };
+    "/home" = {
+      device = "/dev/disk/by-uuid/6dff9ea3-4dfe-4a22-81f4-0a9557945e4b";
+      fsType = "btrfs";
+      options = [
+        "subvol=@home"
+        "compress=zstd"
+      ];
+    };
 
-  fileSystems."/nix" = {
-    device = "/dev/disk/by-uuid/6dff9ea3-4dfe-4a22-81f4-0a9557945e4b";
-    fsType = "btrfs";
-    options = [
-      "subvol=@nix"
-      "compress=zstd"
-    ];
+    "/nix" = {
+      device = "/dev/disk/by-uuid/6dff9ea3-4dfe-4a22-81f4-0a9557945e4b";
+      fsType = "btrfs";
+      options = [
+        "subvol=@nix"
+        "compress=zstd"
+      ];
+    };
   };
-
-  swapDevices = [
+  swapDevices = lib.mkForce [
     {
       device = "/swapfile";
       size = 8192;

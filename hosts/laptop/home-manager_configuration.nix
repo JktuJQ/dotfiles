@@ -45,6 +45,7 @@ let
           (importPrefix + "/applications/media/videos/mpv.nix")
 
           (importPrefix + "/desktop/xdg.nix")
+          (importPrefix + "/desktop/udiskie.nix")
 
           (importPrefix + "/desktop/wayland/uwsm.nix")
 

@@ -1,6 +1,7 @@
 {
   imports = [
     ./hardware_configuration.nix
+    ./disko_configuration.nix
     ./nixos_configuration.nix
 
     ./home-manager_configuration.nix

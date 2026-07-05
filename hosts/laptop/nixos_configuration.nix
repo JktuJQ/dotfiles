@@ -10,6 +10,7 @@ in
     (importPrefix + "/system/locale.nix")
     (importPrefix + "/system/dbus.nix")
 
+    (importPrefix + "/hardware/disks.nix")
     (importPrefix + "/hardware/battery.nix")
 
     (importPrefix + "/peripherals/seatd.nix")
