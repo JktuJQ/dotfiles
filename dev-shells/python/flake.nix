@@ -1,5 +1,5 @@
 {
-  description = "Python development environment (customizable version) with pyright LSP, black, mypy, pytest";
+  description = "Python development environment (customizable version) with pyright LSP, black";
 
   inputs = {
     flake-utils.url = "github:numtide/flake-utils";
@@ -10,8 +10,8 @@
   outputs =
     {
       self,
-      nixpkgs,
       flake-utils,
+      nixpkgs,
     }:
     flake-utils.lib.eachDefaultSystem (
       system:

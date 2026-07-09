@@ -1,5 +1,5 @@
 {
-  description = "Nix development environment with nil (LSP), nixfmt, nixpkgs-fmt, deadnix, statix; for writing Nix expressions and modules";
+  description = "Nix development environment with nil (LSP), nixfmt, deadnix, statix; for writing Nix expressions and modules";
 
   inputs = {
     flake-utils.url = "github:numtide/flake-utils";
@@ -10,8 +10,8 @@
   outputs =
     {
       self,
-      nixpkgs,
       flake-utils,
+      nixpkgs,
     }:
     flake-utils.lib.eachDefaultSystem (
       system:

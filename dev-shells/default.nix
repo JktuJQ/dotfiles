@@ -1,15 +1,15 @@
 {
   nix = {
     path = ./nix;
-    description = "Nix development with nil (LSP), nixfmt, nixpkgs-fmt, deadnix, statix; for writing Nix expressions and modules";
+    description = "Nix development with nil (LSP), nixfmt, deadnix, statix; for writing Nix expressions and modules";
   };
   lua = {
     path = ./lua;
-    description = "Lua 5.1–5.4 or LuaJIT with luarocks, busted, lua-language-server; customizable version";
+    description = "Lua development environment (customizable version) with luarocks, lua-language-server, stylua";
   };
   python = {
     path = ./python;
-    description = "Python 3.9–3.13 with venv, pip, pyright, black, mypy, pytest; customizable version";
+    description = "Python development environment (customizable version) with pyright LSP, black";
   };
   c = {
     path = ./c;
@@ -29,6 +29,6 @@
   };
   latex = {
     path = ./latex;
-    description = "LaTeX with texlive-full, texlab, tectonic; full LaTeX document preparation";
+    description = "LaTeX with texlive-full, texlab";
   };
 }

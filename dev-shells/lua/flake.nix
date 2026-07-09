@@ -1,5 +1,5 @@
 {
-  description = "Lua development environment (customizable version) with luarocks, busted, lua-language-server, luaformatter, luacheck";
+  description = "Lua development environment (customizable version) with luarocks, lua-language-server, stylua";
 
   inputs = {
     flake-utils.url = "github:numtide/flake-utils";
@@ -10,8 +10,8 @@
   outputs =
     {
       self,
-      nixpkgs,
       flake-utils,
+      nixpkgs,
     }:
     flake-utils.lib.eachDefaultSystem (
       system:

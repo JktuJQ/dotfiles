@@ -101,6 +101,68 @@ in
           };
         };
       };
+      bookmarks = {
+        force = true;
+        settings = [
+          {
+            name = "Bookmarks Toolbar";
+            toolbar = true;
+            bookmarks = [
+              {
+                name = "Social";
+                bookmarks = [
+                  {
+                    name = "VK";
+                    url = "https://vk.com/";
+                  }
+                  {
+                    name = "Telegram";
+                    url = "https://web.telegram.org/";
+                  }
+                ];
+              }
+              {
+                name = "YouTube";
+                url = "https://youtube.com/";
+              }
+              {
+                name = "GitHub";
+                url = "https://github.com/JktuJQ";
+              }
+              {
+                name = "Notebooks";
+                bookmarks = [
+                  {
+                    name = "Google Colab";
+                    url = "https://colab.research.google.com/";
+                  }
+                  {
+                    name = "Kaggle";
+                    url = "https://www.kaggle.com/";
+                  }
+                ];
+              }
+              {
+                name = "AI Chats";
+                bookmarks = [
+                  {
+                    name = "DeepSeek Chat";
+                    url = "https://chat.deepseek.com/";
+                  }
+                  {
+                    name = "Qwen Chat";
+                    url = "https://chat.qwen.ai/";
+                  }
+                ];
+              }
+              {
+                name = "Gmail";
+                url = "https://mail.google.com/";
+              }
+            ];
+          }
+        ];
+      };
     };
   };
 

@@ -1,5 +1,5 @@
 {
-  description = "LaTeX development environment with texlive-full, texlab, tectonic";
+  description = "LaTeX development environment with texlive-full, texlab";
 
   inputs = {
     flake-utils.url = "github:numtide/flake-utils";
@@ -10,8 +10,8 @@
   outputs =
     {
       self,
-      nixpkgs,
       flake-utils,
+      nixpkgs,
     }:
     flake-utils.lib.eachDefaultSystem (
       system:
@@ -23,7 +23,6 @@
           packages = with pkgs; [
             texlive.combined.scheme-full
             texlab
-            tectonic
           ];
           shellHook = ''
             echo -e "\e[33m∑\e[0m LaTeX environment ready"

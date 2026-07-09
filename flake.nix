@@ -58,7 +58,6 @@
           packages = with pkgs; [
             nil
             nixfmt
-            nixpkgs-fmt
             deadnix
             statix
           ];

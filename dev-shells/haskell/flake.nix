@@ -10,8 +10,8 @@
   outputs =
     {
       self,
-      nixpkgs,
       flake-utils,
+      nixpkgs,
     }:
     flake-utils.lib.eachDefaultSystem (
       system:
@@ -29,6 +29,7 @@
           packages = with pkgs; [
             ghc
             cabal
+
             hls
             haskellPackages.ghcid
             haskellPackages.hlint

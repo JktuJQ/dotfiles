@@ -43,6 +43,7 @@ let
 
           (importPrefix + "/applications/media/images/imv.nix")
           (importPrefix + "/applications/media/videos/mpv.nix")
+          (importPrefix + "/applications/media/documents/zathura.nix")
 
           (importPrefix + "/desktop/xdg.nix")
           (importPrefix + "/desktop/udiskie.nix")

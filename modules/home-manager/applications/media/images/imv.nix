@@ -3,9 +3,7 @@
     enable = true;
     settings = {
       options = {
-        overlay = false;
         scale_mode = "fit";
-        slideshow_delay = 5;
       };
       aliases = {
         q = "quit";
