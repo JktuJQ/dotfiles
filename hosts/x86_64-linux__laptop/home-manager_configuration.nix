@@ -1,7 +1,6 @@
 {
   inputs,
   self,
-  hostName,
   pkgs,
   lib,
   ...

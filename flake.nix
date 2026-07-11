@@ -5,12 +5,10 @@
     flake-utils.url = "github:numtide/flake-utils";
 
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
-
-    disko = {
-      url = "github:nix-community/disko";
+    darwin = {
+      url = "github:nix-darwin/nix-darwin/nix-darwin-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
     home-manager = {
       url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -21,30 +19,20 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
     inputs:
-    let
-      lib = inputs.nixpkgs.lib;
-    in
     {
-      nixosConfigurations = {
-        laptop =
-          let
-            system = "x86_64-linux";
-            hostName = "laptop";
-          in
-          lib.nixosSystem {
-            inherit system;
-            modules = [ ./hosts/laptop/configuration.nix ];
-            specialArgs = {
-              self = inputs.self;
-              hostName = hostName;
-              inherit inputs;
-            };
-          };
-      };
+      inherit (import ./hosts { inherit inputs; })
+        nixosConfigurations
+        darwinConfigurations
+        homeConfigurations
+        ;
 
       templates = import ./dev-shells;
     }

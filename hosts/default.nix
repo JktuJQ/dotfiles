@@ -1,0 +1,87 @@
+{ inputs }:
+let
+  lib = inputs.nixpkgs.lib;
+  inherit (lib)
+    splitString
+    elemAt
+    filterAttrs
+    attrNames
+    hasSuffix
+    ;
+
+  hostDir = ./.;
+  dirContents = builtins.readDir hostDir;
+  dirNames = attrNames (filterAttrs (name: type: type == "directory") dirContents);
+  parseDir =
+    dirName:
+    let
+      parts = splitString "__" dirName;
+      system = elemAt parts 0;
+      hostname = elemAt parts 1;
+      configurationPath = hostDir + "/${dirName}/configuration.nix";
+    in
+    {
+      inherit system hostname configurationPath;
+    };
+  configurations = map parseDir dirNames;
+
+  buildConfig =
+    builder: cfg:
+    let
+      modules = [
+        cfg.configurationPath
+      ]
+      ++ (
+        if hasSuffix "linux" cfg.system || hasSuffix "darwin" cfg.system then
+          [
+            {
+              networking.hostName = lib.mkDefault cfg.hostname;
+            }
+          ]
+        else
+          [ ]
+      );
+    in
+    builder {
+      inherit (cfg) system;
+      modules = modules;
+      specialArgs = {
+        inherit (inputs) self;
+        inherit (cfg) system hostname;
+        inherit inputs;
+      };
+    };
+in
+builtins.foldl'
+  (
+    acc: cfg:
+    acc
+    // (
+      if hasSuffix "linux" cfg.system then
+        {
+          nixosConfigurations = acc.nixosConfigurations // {
+            ${cfg.hostname} = buildConfig inputs.nixpkgs.lib.nixosSystem cfg;
+          };
+        }
+      else if hasSuffix "darwin" cfg.system then
+        {
+          darwinConfigurations = acc.darwinConfigurations // {
+            ${cfg.hostname} = buildConfig inputs.darwin.lib.darwinSystem cfg;
+          };
+        }
+      else if cfg.system == "home" then
+        {
+          homeConfigurations = acc.homeConfigurations // {
+            ${cfg.hostname} = buildConfig inputs.home-manager.lib.homeManagerConfiguration cfg;
+          };
+        }
+      else
+        throw "Invalid system type in ${cfg.system} (must end with 'linux', 'darwin', or be 'home')"
+    )
+  )
+  {
+    nixosConfigurations = { };
+    darwinConfigurations = { };
+    homeConfigurations = { };
+  }
+  configurations
