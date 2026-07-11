@@ -1,13 +1,12 @@
 {
   inputs,
-  self,
   pkgs,
   lib,
+  homeModulesDir,
+  assetsDir,
   ...
 }:
 let
-  importPrefix = self + "/modules/home-manager";
-
   allUsers = {
     jktujq = {
       systemSettings = {
@@ -20,54 +19,54 @@ let
       };
       homeSettings = {
         imports = [
-          (importPrefix + "/terminal/cli/direnv.nix")
-          (importPrefix + "/terminal/cli/coreutils.nix")
-          (importPrefix + "/terminal/cli/git.nix")
-          (importPrefix + "/terminal/cli/colors.nix")
-          (importPrefix + "/terminal/cli/fastfetch.nix")
+          (homeModulesDir + "/terminal/cli/direnv.nix")
+          (homeModulesDir + "/terminal/cli/coreutils.nix")
+          (homeModulesDir + "/terminal/cli/git.nix")
+          (homeModulesDir + "/terminal/cli/colors.nix")
+          (homeModulesDir + "/terminal/cli/fastfetch.nix")
 
-          (importPrefix + "/terminal/shells/starship.nix")
-          (importPrefix + "/terminal/shells/bash.nix")
-          (importPrefix + "/terminal/shells/fish.nix")
+          (homeModulesDir + "/terminal/shells/starship.nix")
+          (homeModulesDir + "/terminal/shells/bash.nix")
+          (homeModulesDir + "/terminal/shells/fish.nix")
 
-          (importPrefix + "/applications/terminals/kitty.nix")
-          #(importPrefix + "/applications/terminals/alacritty.nix")
+          (homeModulesDir + "/applications/terminals/kitty.nix")
+          #(homeModulesDir + "/applications/terminals/alacritty.nix")
 
-          (importPrefix + "/applications/editors/neovim.nix")
+          (homeModulesDir + "/applications/editors/neovim.nix")
 
-          (importPrefix + "/applications/file_managers/yazi.nix")
-          (importPrefix + "/applications/file_managers/thunar.nix")
+          (homeModulesDir + "/applications/file_managers/yazi.nix")
+          (homeModulesDir + "/applications/file_managers/thunar.nix")
 
-          (importPrefix + "/applications/browsers/firefox.nix")
+          (homeModulesDir + "/applications/browsers/firefox.nix")
 
-          (importPrefix + "/applications/media/images/imv.nix")
-          (importPrefix + "/applications/media/videos/mpv.nix")
-          (importPrefix + "/applications/media/documents/zathura.nix")
+          (homeModulesDir + "/applications/media/images/imv.nix")
+          (homeModulesDir + "/applications/media/videos/mpv.nix")
+          (homeModulesDir + "/applications/media/documents/zathura.nix")
 
-          (importPrefix + "/desktop/xdg.nix")
-          (importPrefix + "/desktop/udiskie.nix")
+          (homeModulesDir + "/desktop/xdg.nix")
+          (homeModulesDir + "/desktop/udiskie.nix")
 
-          (importPrefix + "/desktop/wayland/uwsm.nix")
+          (homeModulesDir + "/desktop/wayland/uwsm.nix")
 
-          (importPrefix + "/desktop/wayland/compositors/hyprland.nix")
+          (homeModulesDir + "/desktop/wayland/compositors/hyprland.nix")
 
-          (importPrefix + "/desktop/wayland/utils/wlogout.nix")
-          (importPrefix + "/desktop/wayland/utils/hypridle.nix")
-          (importPrefix + "/desktop/wayland/utils/hyprlock.nix")
-          (importPrefix + "/desktop/wayland/utils/hyprshot.nix")
-          (importPrefix + "/desktop/wayland/utils/hyprpicker.nix")
+          (homeModulesDir + "/desktop/wayland/utils/wlogout.nix")
+          (homeModulesDir + "/desktop/wayland/utils/hypridle.nix")
+          (homeModulesDir + "/desktop/wayland/utils/hyprlock.nix")
+          (homeModulesDir + "/desktop/wayland/utils/hyprshot.nix")
+          (homeModulesDir + "/desktop/wayland/utils/hyprpicker.nix")
 
-          (importPrefix + "/desktop/wayland/ui/waybar.nix")
+          (homeModulesDir + "/desktop/wayland/ui/waybar.nix")
 
-          #(importPrefix + "/desktop/wayland/launchers/anyrun.nix")
-          (importPrefix + "/desktop/wayland/launchers/rofi.nix")
+          #(homeModulesDir + "/desktop/wayland/launchers/anyrun.nix")
+          (homeModulesDir + "/desktop/wayland/launchers/rofi.nix")
 
-          #(importPrefix + "/desktop/wayland/notifications/libnotify.nix")
-          (importPrefix + "/desktop/wayland/notifications/mako.nix")
-          #(importPrefix + "/desktop/wayland/notifications/swaync.nix")
+          #(homeModulesDir + "/desktop/wayland/notifications/libnotify.nix")
+          (homeModulesDir + "/desktop/wayland/notifications/mako.nix")
+          #(homeModulesDir + "/desktop/wayland/notifications/swaync.nix")
 
-          (importPrefix + "/desktop/wayland/wallpapers/hyprpaper.nix")
-          #(importPrefix + "/desktop/wayland/wallpapers/awww.nix")
+          (homeModulesDir + "/desktop/wayland/wallpapers/hyprpaper.nix")
+          #(homeModulesDir + "/desktop/wayland/wallpapers/awww.nix")
         ];
         home.sessionVariables = {
           # SHELL = "fish";
@@ -77,7 +76,7 @@ let
           # LAUNCHER = "rofi"
           # FILE_MANAGER = "thunar"
         };
-        home.file.".face".source = (self + "/assets/avatar.png");
+        home.file.".face".source = assetsDir + "/avatar.png";
       };
     };
   };
@@ -101,7 +100,7 @@ in
     lib.mkMerge [
       {
         _module.args = {
-          inherit self;
+          inherit assetsDir;
         };
 
         home = {

@@ -1,7 +1,7 @@
 {
   inputs,
-  self,
   pkgs,
+  assetsDir,
   ...
 }:
 {
@@ -9,7 +9,7 @@
 
   stylix = {
     enable = true;
-    image = (self + "/assets/wallpaper.jpg");
+    image = assetsDir + "/wallpaper.jpg";
     cursor = {
       package = pkgs.catppuccin-cursors.mochaDark;
       name = "catppuccin-mocha-dark-cursors";

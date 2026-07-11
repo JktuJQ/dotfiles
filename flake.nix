@@ -1,5 +1,5 @@
 {
-  description = "NixOS configuration with home-manager";
+  description = "Flake for all my Nix configs";
 
   inputs = {
     flake-utils.url = "github:numtide/flake-utils";

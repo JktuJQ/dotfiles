@@ -1,29 +1,26 @@
-{ self, ... }:
-let
-  importPrefix = self + "/modules/nixos";
-in
+{ nixosModulesDir, ... }:
 {
   imports = [
-    (importPrefix + "/nix.nix")
+    (nixosModulesDir + "/nix.nix")
 
-    (importPrefix + "/system/boot.nix")
-    (importPrefix + "/system/locale.nix")
-    (importPrefix + "/system/dbus.nix")
+    (nixosModulesDir + "/system/boot.nix")
+    (nixosModulesDir + "/system/locale.nix")
+    (nixosModulesDir + "/system/dbus.nix")
 
-    (importPrefix + "/hardware/disks.nix")
-    (importPrefix + "/hardware/battery.nix")
+    (nixosModulesDir + "/hardware/disks.nix")
+    (nixosModulesDir + "/hardware/battery.nix")
 
-    (importPrefix + "/peripherals/seatd.nix")
-    (importPrefix + "/peripherals/audio.nix")
-    (importPrefix + "/peripherals/video.nix")
+    (nixosModulesDir + "/peripherals/seatd.nix")
+    (nixosModulesDir + "/peripherals/audio.nix")
+    (nixosModulesDir + "/peripherals/video.nix")
 
-    (importPrefix + "/networking/network-manager.nix")
-    (importPrefix + "/networking/bluetooth.nix")
-    (importPrefix + "/networking/openssh.nix")
+    (nixosModulesDir + "/networking/network-manager.nix")
+    (nixosModulesDir + "/networking/bluetooth.nix")
+    (nixosModulesDir + "/networking/openssh.nix")
 
-    (importPrefix + "/desktop/xdg.nix")
-    (importPrefix + "/desktop/wayland/regreet.nix")
-    (importPrefix + "/desktop/wayland/compositors/hyprland.nix")
-    (importPrefix + "/desktop/wayland/utils/hyprlock.nix")
+    (nixosModulesDir + "/desktop/xdg.nix")
+    (nixosModulesDir + "/desktop/wayland/regreet.nix")
+    (nixosModulesDir + "/desktop/wayland/compositors/hyprland.nix")
+    (nixosModulesDir + "/desktop/wayland/utils/hyprlock.nix")
   ];
 }

@@ -25,28 +25,36 @@ let
     };
   configurations = map parseDir dirNames;
 
+  commonSpecialArgs = rec {
+    inherit (inputs) self;
+
+    assetsDir = self + "/assets";
+
+    modulesDir = self + "/modules";
+    nixosModulesDir = modulesDir + "/nixos";
+    darwinModulesDir = modulesDir + "/darwin";
+    homeModulesDir = modulesDir + "/home";
+  };
+
   buildConfig =
     builder: cfg:
     let
+      hostNameModule =
+        { lib, hostname, ... }:
+        {
+          networking.hostName = lib.mkDefault hostname;
+        };
       modules = [
         cfg.configurationPath
       ]
       ++ (
-        if hasSuffix "linux" cfg.system || hasSuffix "darwin" cfg.system then
-          [
-            {
-              networking.hostName = lib.mkDefault cfg.hostname;
-            }
-          ]
-        else
-          [ ]
+        if hasSuffix "linux" cfg.system || hasSuffix "darwin" cfg.system then [ hostNameModule ] else [ ]
       );
     in
     builder {
       inherit (cfg) system;
       modules = modules;
-      specialArgs = {
-        inherit (inputs) self;
+      specialArgs = commonSpecialArgs // {
         inherit (cfg) system hostname;
         inherit inputs;
       };
