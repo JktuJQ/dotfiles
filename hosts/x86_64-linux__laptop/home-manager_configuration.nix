@@ -22,6 +22,8 @@ let
           (homeModulesDir + "/terminal/cli/direnv.nix")
           (homeModulesDir + "/terminal/cli/coreutils.nix")
           (homeModulesDir + "/terminal/cli/git.nix")
+          (homeModulesDir + "/terminal/cli/curl.nix")
+          (homeModulesDir + "/terminal/cli/btop.nix")
           (homeModulesDir + "/terminal/cli/colors.nix")
           (homeModulesDir + "/terminal/cli/fastfetch.nix")
 
@@ -32,6 +34,7 @@ let
           (homeModulesDir + "/applications/terminals/kitty.nix")
           #(homeModulesDir + "/applications/terminals/alacritty.nix")
 
+          #(homeModulesDir + "/applications/editors/vim.nix")
           (homeModulesDir + "/applications/editors/neovim.nix")
 
           (homeModulesDir + "/applications/file_managers/yazi.nix")

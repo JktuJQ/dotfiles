@@ -16,7 +16,8 @@
 
     (nixosModulesDir + "/networking/network-manager.nix")
     (nixosModulesDir + "/networking/bluetooth.nix")
-    (nixosModulesDir + "/networking/openssh.nix")
+
+    (nixosModulesDir + "/networking/ssh/openssh.nix")
 
     (nixosModulesDir + "/desktop/xdg.nix")
     (nixosModulesDir + "/desktop/wayland/regreet.nix")
