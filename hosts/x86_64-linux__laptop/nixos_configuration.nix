@@ -4,6 +4,7 @@
     (nixosModulesDir + "/nix.nix")
 
     (nixosModulesDir + "/system/boot.nix")
+    (nixosModulesDir + "/system/users.nix")
     (nixosModulesDir + "/system/locale.nix")
     (nixosModulesDir + "/system/dbus.nix")
 

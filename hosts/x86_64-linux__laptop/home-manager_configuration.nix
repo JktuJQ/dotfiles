@@ -1,5 +1,6 @@
 {
   inputs,
+  config,
   pkgs,
   lib,
   homeModulesDir,
@@ -16,6 +17,9 @@ let
           "video"
           "networkmanager"
         ];
+
+        initialPassword = lib.mkForce null;
+        hashedPasswordFile = config.age.secrets."jktujq_hashed_password".path;
       };
       homeSettings = {
         imports = [

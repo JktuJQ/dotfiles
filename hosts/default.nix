@@ -30,6 +30,8 @@ let
 
     assetsDir = self + "/assets";
 
+    secretsDir = self + "/secrets";
+
     modulesDir = self + "/modules";
     nixosModulesDir = modulesDir + "/nixos";
     darwinModulesDir = modulesDir + "/darwin";
