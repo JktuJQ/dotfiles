@@ -22,6 +22,7 @@ username:
 
   home-manager.users.${username} = {
     imports = [
+      (homeModulesDir + "terminal/cli/nh.nix")
       (homeModulesDir + "terminal/cli/direnv.nix")
 
       (homeModulesDir + "terminal/cli/bat.nix")
