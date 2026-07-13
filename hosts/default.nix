@@ -19,38 +19,60 @@ let
       system = elemAt parts 0;
       hostname = elemAt parts 1;
       configurationPath = hostDir + "/${dirName}/configuration.nix";
+
+      usersDir = hostDir + "/${dirName}/users/";
+      userFiles =
+        if builtins.pathExists usersDir then
+          map (name: usersDir + "/${name}") (attrNames (builtins.readDir usersDir))
+        else
+          [ ];
     in
     {
-      inherit system hostname configurationPath;
+      inherit
+        system
+        hostname
+        configurationPath
+        userFiles
+        ;
     };
   configurations = map parseDir dirNames;
 
   commonSpecialArgs = rec {
     inherit (inputs) self;
 
-    assetsDir = self + "/assets";
+    assetsDir = self + "/assets/";
 
-    secretsDir = self + "/secrets";
+    secretsDir = self + "/secrets/";
 
-    modulesDir = self + "/modules";
-    nixosModulesDir = modulesDir + "/nixos";
-    darwinModulesDir = modulesDir + "/darwin";
-    homeModulesDir = modulesDir + "/home";
+    modulesDir = self + "/modules/";
+    nixosModulesDir = modulesDir + "nixos/";
+    darwinModulesDir = modulesDir + "darwin/";
+    homeModulesDir = modulesDir + "home/";
   };
 
   buildConfig =
     builder: cfg:
     let
-      hostNameModule =
-        { lib, hostname, ... }:
-        {
-          networking.hostName = lib.mkDefault hostname;
-        };
+      userModules = map (
+        file: (import file) (lib.removeSuffix ".nix" (builtins.baseNameOf file))
+      ) cfg.userFiles;
+
       modules = [
         cfg.configurationPath
       ]
+      ++ userModules
       ++ (
-        if hasSuffix "linux" cfg.system || hasSuffix "darwin" cfg.system then [ hostNameModule ] else [ ]
+        if hasSuffix "linux" cfg.system || hasSuffix "darwin" cfg.system then
+          [
+            (
+              { lib, hostname, ... }:
+              {
+                networking.hostName = lib.mkDefault hostname;
+              }
+            )
+          ]
+        else
+          [ ]
       );
     in
     builder {

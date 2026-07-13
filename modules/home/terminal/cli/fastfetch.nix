@@ -5,7 +5,7 @@
     settings = {
       logo = {
         type = "auto";
-        source = assetsDir + "/NixOs_logo.png";
+        source = assetsDir + "NixOs_logo.png";
         height = 22;
         padding = {
           top = 0;
