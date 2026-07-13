@@ -26,9 +26,6 @@
       set fish_greeting
       fastfetch
 
-      starship init fish | source
-
-      zoxide init fish | source
       fzf_configure_bindings --directory=\cd --history=\ch --variables=\cr
     '';
   };

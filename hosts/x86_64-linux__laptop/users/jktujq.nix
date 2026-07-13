@@ -23,10 +23,16 @@ username:
   home-manager.users.${username} = {
     imports = [
       (homeModulesDir + "terminal/cli/direnv.nix")
-      (homeModulesDir + "terminal/cli/coreutils.nix")
+
+      (homeModulesDir + "terminal/cli/bat.nix")
+      (homeModulesDir + "terminal/cli/eza.nix")
+      (homeModulesDir + "terminal/cli/fd.nix")
+      (homeModulesDir + "terminal/cli/fzf.nix")
+      (homeModulesDir + "terminal/cli/ripgrep.nix")
+      (homeModulesDir + "terminal/cli/btop.nix")
       (homeModulesDir + "terminal/cli/git.nix")
       (homeModulesDir + "terminal/cli/curl.nix")
-      (homeModulesDir + "terminal/cli/btop.nix")
+
       (homeModulesDir + "terminal/cli/colors.nix")
       (homeModulesDir + "terminal/cli/fastfetch.nix")
 
