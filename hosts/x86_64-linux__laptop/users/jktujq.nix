@@ -25,6 +25,7 @@ username:
       (homeModulesDir + "terminal/cli/nh.nix")
       (homeModulesDir + "terminal/cli/direnv.nix")
 
+      (homeModulesDir + "terminal/cli/zoxide.nix")
       (homeModulesDir + "terminal/cli/bat.nix")
       (homeModulesDir + "terminal/cli/eza.nix")
       (homeModulesDir + "terminal/cli/fd.nix")

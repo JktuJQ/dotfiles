@@ -26,7 +26,7 @@
       set fish_greeting
       fastfetch
 
-      fzf_configure_bindings --directory=\cd --history=\ch --variables=\cr
+      fish_vi_key_bindings
     '';
   };
 
