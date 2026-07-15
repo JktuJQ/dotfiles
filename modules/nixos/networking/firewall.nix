@@ -1,8 +1,5 @@
 {
-  networking.firewall = {
-    enable = true;
-    allowedTCPPorts = [ 22 ];
-  };
+  networking.firewall.enable = true;
 
   networking.firewall.logRefusedConnections = true;
 }

@@ -18,6 +18,8 @@
     (nixosModulesDir + "/networking/network-manager.nix")
     (nixosModulesDir + "/networking/bluetooth.nix")
 
+    (nixosModulesDir + "/networking/vpn/wireguard_client.nix")
+
     (nixosModulesDir + "/networking/ssh/openssh.nix")
 
     (nixosModulesDir + "/desktop/xdg.nix")

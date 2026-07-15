@@ -39,6 +39,12 @@
         homeConfigurations
         ;
 
+      kexecImage =
+        (inputs.nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [ ./kexec_configuration.nix ];
+        }).config.system.build.kexec_compressed;
+
       templates = import ./dev-shells;
     }
     // inputs.flake-utils.lib.eachDefaultSystem (

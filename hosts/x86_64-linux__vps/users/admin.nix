@@ -11,9 +11,10 @@ username:
     isNormalUser = true;
     home = "/home/${username}";
     extraGroups = [ "wheel" ];
+    initialPassword = username;
 
     openssh.authorizedKeys.keys = [
-      (import secretsDir + "ssh-keys.nix").users.jktujq
+      (import (secretsDir + "ssh_keys.nix")).users.jktujq
     ];
   };
 
@@ -22,6 +23,7 @@ username:
       (homeModulesDir + "terminal/cli/git.nix")
       (homeModulesDir + "terminal/cli/curl.nix")
       (homeModulesDir + "terminal/cli/btop.nix")
+
       (homeModulesDir + "applications/editors/vim.nix")
     ];
     home = {
