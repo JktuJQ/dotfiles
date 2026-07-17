@@ -23,26 +23,27 @@ in
         modules-left = [
           "custom/nixlogo"
           "group/system"
+          "tray"
         ];
 
         modules-center = [
-          "hyprland/language"
           "hyprland/workspaces"
-          "custom/notifications"
         ];
 
         modules-right = [
-          "group/mpris_drawer"
           "group/audio"
-          "group/light"
-          "custom/connections"
+          "backlight"
+          "group/network"
+          "bluetooth"
+          "hyprland/language"
           "custom/weather"
           "clock"
         ];
 
         "custom/nixlogo" = {
-          format = "&#8194;";
+          format = "&#8201;&#8201;";
           tooltip = false;
+          on-click = "swaync-client -t";
         };
 
         "group/system" = {
@@ -56,7 +57,6 @@ in
             "battery"
           ];
         };
-
         "cpu" = {
           format = "&#8194;  ";
           format-alt = "&#8194;  {usage}%  ";
@@ -80,7 +80,7 @@ in
         "network#speed" = {
           format = " &#8201;󰹹  ";
           format-alt = " 󰹹 &#8201;{bandwidthDownBytes}-&#8201;{bandwidthUpBytes}  ";
-          tooltip-format = "Network Traffic";
+          tooltip-format = "Network Traffic: {bandwidthDownBytes} in, {bandwidthUpBytes} out";
         };
         "battery" = {
           states = {
@@ -107,10 +107,12 @@ in
           tooltip-format = "Battery: {capacity}%";
         };
 
-        "hyprland/language" = {
-          format = "{short}";
-          tooltip-format = "Layout: {long}";
+        "tray" = {
+          spacing = 18;
+          icon-size = 16;
+          show-passive = false;
         };
+
         "hyprland/workspaces" = {
           persistent-workspaces = {
             "eDP-1" = [
@@ -121,11 +123,11 @@ in
               5
             ];
             "HDMI-A-1" = [
-              6
-              7
               8
               9
               10
+              11
+              12
             ];
           };
           format = "{icon}{windows}";
@@ -141,6 +143,7 @@ in
             "class<google-chrome>" = "&#8201;";
             "class<kitty>" = "󰄛&#8201;";
             "class<discord>" = "&#8201;";
+            "class<vencord>" = "&#8201;";
             "class<org.telegram.desktop>" = "&#8201;";
             "class<spotify>" = "&#8201;";
             "class<code.*>" = "󰨞&#8201;";
@@ -149,123 +152,102 @@ in
             "class<thunar>" = "&#8201;";
           };
         };
-        "custom/notifications" = {
-          exec = "makoctl mode | grep -q 'do-not-disturb' && echo ' ' || echo '&#8201;&#8201;&#8202;&#8202;'";
-          interval = 5;
-          on-click = "if [ \"$(makoctl mode)\" = \"do-not-disturb\" ]; then makoctl mode -r do-not-disturb; else makoctl mode -s do-not-disturb; fi";
-          tooltip = false;
-        };
-
-        "group/mpris_drawer" = {
-          orientation = "inherit";
-          drawer = {
-            transition-duration = 300;
-            transition-left-to-right = false;
-          };
-          modules = [
-            "custom/mpris_trigger"
-            "custom/mpris_prev"
-            "custom/mpris_play"
-            "custom/mpris_next"
-          ];
-        };
-
-        "custom/mpris_trigger" = {
-          format = "&#8194;";
-          exec = "playerctl metadata --format '{{artist}} - {{title}}' 2>/dev/null || echo 'No Music'";
-          interval = 2;
-          tooltip = true;
-        };
-        "custom/mpris_prev" = {
-          format = "󰒮";
-          on-click = "playerctl previous";
-          tooltip = false;
-        };
-        "custom/mpris_play" = {
-          format = "󰐊";
-          on-click = "playerctl play-pause";
-          tooltip = false;
-        };
-        "custom/mpris_next" = {
-          format = "󰒭 ";
-          on-click = "playerctl next";
-          tooltip = false;
-        };
 
         "group/audio" = {
-          orientation = "inherit";
-          drawer = {
-            transition-duration = 300;
-            transition-left-to-right = false;
-          };
-          modules = [
-            "pulseaudio"
-            "pulseaudio/slider"
-          ];
-        };
-
-        "pulseaudio" = {
-          format = "{icon}  &#8201;{format_source}";
-          format-muted = "󰖁  &#8201;{format_source}";
-          #format-source = "&#8201;";
-          #format-source-muted = "&#8194;";
-          format-source = "󰍬";
-          format-source-muted = "󰍭&#8202;";
-          format-icons = {
-            default = [
-              ""
-              ""
-              ""
-            ];
-          };
-          on-click = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
-          on-click-right = "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle";
-          tooltip-format = "Volume: {volume}%\nL-Click: Mute Sound\nR-Click: Mute Mic";
-        };
-
-        "pulseaudio/slider" = {
-          min = 0;
-          max = 100;
           orientation = "horizontal";
-        };
-
-        "group/light" = {
-          orientation = "inherit";
-          drawer = {
-            transition-duration = 300;
-            transition-left-to-right = false;
-          };
           modules = [
-            "backlight"
-            "backlight/slider"
+            "wireplumber#sink"
+            "wireplumber#source"
           ];
+        };
+        "wireplumber#sink" = {
+          format = "{icon}&#8194; ";
+          format-muted = "󰖁&#8194; ";
+          format-icons = [
+            ""
+            ""
+            ""
+          ];
+          on-click = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
+          tooltip-format = "Volume: {volume}%";
+        };
+        "wireplumber#source" = {
+          node-type = "Audio/Source";
+          format = " {icon}";
+          format-muted = " 󰍭";
+          format-icons = [
+            "󰍬"
+          ];
+          on-click = "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle";
+          tooltip-format = "Mic: {volume}%";
         };
 
         "backlight" = {
-          format = "{icon}";
+          format = "{icon}&#8201;&#8202;";
           format-icons = [
-            "&#8201;󰃞&#8194;"
-            "&#8201;󰃟&#8194;"
-            "&#8201;󰃠&#8194;"
+            "󰃞"
+            "󰃟"
+            "󰃠"
           ];
           tooltip-format = "Brightness: {percent}%";
         };
-        "backlight/slider" = {
-          min = 0;
-          max = 100;
+
+        "group/network" = {
           orientation = "horizontal";
+          modules = [
+            "network"
+            "custom/vpn"
+          ];
+        };
+        "network" = {
+          format-wifi = "{icon}&#8194; ";
+          format-icons = [
+            "󰤯"
+            "󰤟"
+            "󰤢"
+            "󰤥"
+            "󰤨"
+          ];
+          interval = 5;
+          tooltip-format-wifi = "{essid}: signal {signalStrength}%";
+        };
+        "custom/vpn" = {
+          format = " {icon}&#8201;";
+          format-icons = {
+            on = "󰌾";
+            off = "󰌿";
+          };
+          return-type = "json";
+          exec = ''
+            if ip link show amn0 2>/dev/null | grep -q "state"; then
+              echo '{"text": "on", "alt": "on"}'
+            else
+              echo '{"text": "off", "alt": "off"}'
+            fi
+          '';
+          interval = 5;
+          tooltip-format = "AmneziaVPN: {text}";
         };
 
-        "custom/connections" = {
-          format = "   &#8201;";
-          on-click = "kitty -e nmtui";
-          on-click-right = "blueman-manager";
-          tooltip-format = "L-Click: WiFi Settings\nR-Click: Bluetooth Settings";
+        "bluetooth" = {
+          format = "{icon}";
+          format-icons = {
+            enabled = "󰂯";
+            disabled = "󰂲";
+            connected = "󰂱";
+            pairable = "󰂰";
+          };
+          tooltip-format = "Using: {controller_alias} ({status})";
+        };
+
+        "hyprland/language" = {
+          format = "{short}";
+          tooltip-format = "Layout: {long}";
         };
 
         "custom/weather" = {
           exec = "curl -s 'https://wttr.in/?format=1'";
-          interval = 1800;
+          interval = 100;
           tooltip = false;
         };
 
@@ -305,7 +287,25 @@ in
         border: none;
         box-shadow: none;
       }
-
+      window#waybar .modules-left > widget > *,
+      window#waybar .modules-center > widget > *,
+      window#waybar .modules-right > widget > * {
+        background-color: @bg;
+        color: @text-sec;
+        border-radius: 20px;
+        padding: 4px 14px;
+        margin: 0 6px;
+      }
+      window#waybar .modules-left > widget > box > widget > *,
+      window#waybar .modules-right > widget > box > widget > * {
+        background-color: transparent;
+        color: @text-sec;
+        padding: 0;
+        margin: 0;
+      }
+      window#waybar .modules-right > widget > box > widget > * {
+        padding: 0 2px;
+      }
       window#waybar {
         background-color: transparent;
         min-height: 40px;
@@ -323,53 +323,6 @@ in
       tooltip label {
         color: @text-sec;
         padding: 5px;
-      }
-
-      window#waybar .modules-left > widget > *,
-      window#waybar .modules-center > widget > *,
-      window#waybar .modules-right > widget > * {
-        background-color: @bg;
-        color: @text-sec;
-        border-radius: 20px;
-        padding: 4px 14px;
-        margin: 0 6px;
-      }
-
-      window#waybar .modules-left > widget > box > widget > *,
-      window#waybar .modules-right > widget > box > widget > * {
-        background-color: transparent;
-        color: @text-sec;
-        padding: 0;
-        margin: 0;
-      }
-
-      drawer {
-        padding: 0;
-        margin: 0;
-      }
-
-      #custom-mpris_trigger, #pulseaudio, #backlight {
-        padding: 0;
-        background-color: transparent;
-      }
-
-      #custom-mpris_prev, #custom-mpris_play, #custom-mpris_next {
-        background-color: transparent;
-        font-size: 22px;
-        padding: 0 8px;
-        margin-right: 0px;
-      }
-
-      #pulseaudio-slider {
-        margin-left: 10px;
-        margin-right: 23px;
-        padding: 0;
-      }
-
-      #backlight-slider {
-        margin-left: 10px;
-        margin-right: 20px;
-        padding: 0;
       }
       scale trough {
         min-height: 10px;
@@ -398,26 +351,15 @@ in
         min-width: 45px;
       }
 
-      #workspaces button:hover {
-        background-color: alpha(@accent, 0.5);
-      }
-
       window#waybar #battery.charging,
       window#waybar #battery.plugged {
         color: @bat-charge;
       }
-
       window#waybar #battery.warning:not(.charging) {
         color: @bat-warn;
       }
-
       window#waybar #battery.critical:not(.charging) {
         color: @bat-crit;
-        animation: blink 2s linear infinite;
-      }
-
-      @keyframes blink {
-        to { color: @text-sec; }
       }
     '';
   };

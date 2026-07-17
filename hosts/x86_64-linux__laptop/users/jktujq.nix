@@ -76,8 +76,8 @@ username:
       (homeModulesDir + "desktop/wayland/launchers/rofi.nix")
 
       #(homeModulesDir + "desktop/wayland/notifications/libnotify.nix")
-      (homeModulesDir + "desktop/wayland/notifications/mako.nix")
-      #(homeModulesDir + "desktop/wayland/notifications/swaync.nix")
+      #(homeModulesDir + "desktop/wayland/notifications/mako.nix")
+      (homeModulesDir + "desktop/wayland/notifications/swaync.nix")
 
       (homeModulesDir + "desktop/wayland/wallpapers/hyprpaper.nix")
       #(homeModulesDir + "desktop/wayland/wallpapers/awww.nix")

@@ -5,9 +5,12 @@ let
   monitor1 = "eDP-1";
   monitor2 = "HDMI-A-1";
 
+  workspaces = 7;
+
   lua = lib.generators.mkLuaInline;
   dsp = {
     exec = cmd: lua ''hl.dsp.exec_cmd("${cmd}")'';
+    layout = cmd: lua ''hl.dsp.layout("${cmd}")'';
     close = lua "hl.dsp.window.close()";
     kill = lua "hl.dsp.window.kill()";
     float = lua ''hl.dsp.window.float({ action = "toggle" })'';
@@ -68,6 +71,10 @@ in
             inactive_border = "#${colors.base02}";
           };
         };
+        dwindle = {
+          force_split = 2;
+          preserve_split = true;
+        };
         decoration = {
           rounding = 12;
           blur = {
@@ -78,6 +85,10 @@ in
           active_opacity = 0.9;
           inactive_opacity = 0.88;
           fullscreen_opacity = 1.0;
+        };
+        misc = {
+          force_default_wallpaper = -1;
+          disable_hyprland_logo = true;
         };
         input = {
           kb_layout = "us,ru";
@@ -241,32 +252,33 @@ in
           monitor = monitor1;
         }
         {
-          workspace = i + 5;
+          workspace = i + workspaces;
           monitor = monitor2;
         }
-      ]) (lib.range 1 5);
+      ]) (lib.range 1 workspaces);
 
       bind = [
         (bind "SUPER + Q" dsp.close)
         (bind "SUPER + SHIFT + Q" dsp.kill)
         (bind "SUPER + F" dsp.fullscreen)
-        (bind "SUPER + V" dsp.float)
-        (bind "SUPER + h" (dsp.focusDir "l"))
-        (bind "SUPER + l" (dsp.focusDir "r"))
-        (bind "SUPER + k" (dsp.focusDir "u"))
-        (bind "SUPER + j" (dsp.focusDir "d"))
-        (bind "SUPER + SHIFT + h" (dsp.moveDir "l"))
-        (bind "SUPER + SHIFT + l" (dsp.moveDir "r"))
-        (bind "SUPER + SHIFT + k" (dsp.moveDir "u"))
-        (bind "SUPER + SHIFT + j" (dsp.moveDir "d"))
-        (bindOpts "SUPER + ALT + h" (dsp.resizeRel (-10) 0) { repeating = true; })
-        (bindOpts "SUPER + ALT + l" (dsp.resizeRel 10 0) { repeating = true; })
-        (bindOpts "SUPER + ALT + k" (dsp.resizeRel 0 (-10)) { repeating = true; })
-        (bindOpts "SUPER + ALT + j" (dsp.resizeRel 0 10) { repeating = true; })
-        (bind "SUPER + T" (dsp.exec "kitty")) # или любой другой терминал
-        (bind "SUPER + B" (dsp.exec "firefox")) # или браузер
-        (bind "SUPER + SPACE" (dsp.exec "rofi -show drun"))
-        (bind "SUPER + E" (dsp.exec "thunar")) # файловый менеджер
+        (bind "SUPER + SHIFT + F" dsp.float)
+        (bind "SUPER + S" (dsp.layout "togglesplit"))
+        (bind "SUPER + H" (dsp.focusDir "l"))
+        (bind "SUPER + L" (dsp.focusDir "r"))
+        (bind "SUPER + K" (dsp.focusDir "u"))
+        (bind "SUPER + J" (dsp.focusDir "d"))
+        (bind "SUPER + SHIFT + H" (dsp.moveDir "l"))
+        (bind "SUPER + SHIFT + L" (dsp.moveDir "r"))
+        (bind "SUPER + SHIFT + K" (dsp.moveDir "u"))
+        (bind "SUPER + SHIFT + J" (dsp.moveDir "d"))
+        (bindOpts "SUPER + ALT + H" (dsp.resizeRel (-10) 0) { repeating = true; })
+        (bindOpts "SUPER + ALT + L" (dsp.resizeRel 10 0) { repeating = true; })
+        (bindOpts "SUPER + ALT + K" (dsp.resizeRel 0 (-10)) { repeating = true; })
+        (bindOpts "SUPER + ALT + J" (dsp.resizeRel 0 10) { repeating = true; })
+        (bind "SUPER + T" (dsp.exec config.home.sessionVariables.TERMINAL))
+        (bind "SUPER + B" (dsp.exec config.home.sessionVariables.BROWSER))
+        (bind "SUPER + SPACE" (dsp.exec config.home.sessionVariables.LAUNCHER))
+        (bind "SUPER + E" (dsp.exec config.home.sessionVariables.FILE_MANAGER))
         (bind "SUPER + escape" (dsp.exec "wlogout"))
         (bind "SUPER + CTRL + SHIFT + ALT + Q" (dsp.exec "loginctl terminate-user $USER"))
         (bind "Print" (dsp.exec "hyprshot -m output"))
@@ -297,18 +309,18 @@ in
           monitor = (monitor + 1) % 2
       end)
 
-      for i = 1, 5 do
+      for i = 1, ${toString workspaces} do
           local num = i
 
           hl.bind("SUPER + " .. tostring(num), function()
-              hl.dispatch(hl.dsp.focus({ workspace = num + 5 * monitor }))
+              hl.dispatch(hl.dsp.focus({ workspace = num + ${toString workspaces} * monitor }))
           end)
           hl.bind("SUPER + SHIFT + " .. tostring(num), function()
-              hl.dispatch(hl.dsp.window.move({ workspace = num + 5 * monitor }))
+              hl.dispatch(hl.dsp.window.move({ workspace = num + ${toString workspaces} * monitor }))
           end)
           hl.bind("SUPER + SHIFT + TAB + " .. tostring(num), function()
               local other = (monitor + 1) % 2
-              hl.dispatch(hl.dsp.window.move({ workspace = num + 5 * other }))
+              hl.dispatch(hl.dsp.window.move({ workspace = num + ${toString workspaces} * other }))
           end)
       end
     '';
