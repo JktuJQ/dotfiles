@@ -6,7 +6,6 @@
     config = {
       profile = "high-quality";
       cache = true;
-      cache-default = 4000000;
       ytdl-format = "bestvideo+bestaudio";
       save-position-on-quit = true;
     };

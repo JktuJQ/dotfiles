@@ -50,7 +50,7 @@ in
           orientation = "horizontal";
           modules = [
             "cpu"
-            "temperature"
+            "power-profiles-daemon"
             "memory"
             "disk"
             "network#speed"
@@ -62,14 +62,19 @@ in
           format-alt = "&#8194;  {usage}%  ";
           tooltip-format = "CPU: {usage}%";
         };
-        "temperature" = {
-          format = "  &#8201;  ";
-          format-alt = " &#8201;  {temperatureC}°C  ";
-          tooltip-format = "Temp: {temperatureC}°C";
+        "power-profiles-daemon" = {
+          format = "  {icon}  ";
+          format-icons = {
+            default = "󰾅";
+            balanced = "󰾅";
+            performance = "󰓅";
+            power-saver = "󰾆";
+          };
+          tooltip-format = "Power profile: {profile}\nDriver: {driver}";
         };
         "memory" = {
           format = "  &#8194;  ";
-          format-alt = "   {percentage}%  ";
+          format-alt = " &#8194;  {percentage}%  ";
           tooltip-format = "RAM: {used:0.1f}GB / {total:0.1f}GB";
         };
         "disk" = {

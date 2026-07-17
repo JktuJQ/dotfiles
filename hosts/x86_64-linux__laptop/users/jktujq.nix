@@ -15,6 +15,7 @@ username:
       "audio"
       "video"
       "networkmanager"
+      "bluetooth"
     ];
 
     hashedPasswordFile = config.age.secrets."${username}_hashed_password".path;
@@ -48,6 +49,9 @@ username:
       #(homeModulesDir + "applications/editors/vim.nix")
       (homeModulesDir + "applications/editors/neovim.nix")
 
+      (homeModulesDir + "applications/utils/qalculate.nix")
+      (homeModulesDir + "applications/utils/obsidian.nix")
+
       (homeModulesDir + "applications/file_managers/yazi.nix")
       (homeModulesDir + "applications/file_managers/thunar.nix")
 
@@ -61,6 +65,7 @@ username:
       (homeModulesDir + "desktop/udiskie.nix")
 
       (homeModulesDir + "desktop/wayland/uwsm.nix")
+      (homeModulesDir + "desktop/wayland/wl-clipboard.nix")
 
       (homeModulesDir + "desktop/wayland/compositors/hyprland.nix")
 

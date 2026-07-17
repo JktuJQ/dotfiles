@@ -1,6 +1,4 @@
 { pkgs, ... }:
 {
-  environment.systemPackages = with pkgs; [
-    brightnessctl
-  ];
+  environment.systemPackages = [ pkgs.brightnessctl ];
 }

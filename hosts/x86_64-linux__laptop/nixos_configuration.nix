@@ -10,6 +10,7 @@
 
     (nixosModulesDir + "/hardware/disks.nix")
     (nixosModulesDir + "/hardware/battery.nix")
+    (nixosModulesDir + "/hardware/graphics.nix")
 
     (nixosModulesDir + "/peripherals/seatd.nix")
     (nixosModulesDir + "/peripherals/audio.nix")
@@ -21,6 +22,8 @@
     (nixosModulesDir + "/networking/vpn/wireguard_client.nix")
 
     (nixosModulesDir + "/networking/ssh/openssh.nix")
+
+    (nixosModulesDir + "applications/allow_unfree.nix")
 
     (nixosModulesDir + "/desktop/xdg.nix")
     (nixosModulesDir + "/desktop/wayland/regreet.nix")
