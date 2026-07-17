@@ -61,6 +61,11 @@ username:
       (homeModulesDir + "applications/media/videos/mpv.nix")
       (homeModulesDir + "applications/media/documents/zathura.nix")
 
+      (homeModulesDir + "/applications/communications/thunderbird.nix")
+      (homeModulesDir + "/applications/communications/telegram.nix")
+      (homeModulesDir + "/applications/communications/discord.nix")
+      (homeModulesDir + "/applications/communications/zoom.nix")
+
       (homeModulesDir + "desktop/xdg.nix")
       (homeModulesDir + "desktop/udiskie.nix")
 

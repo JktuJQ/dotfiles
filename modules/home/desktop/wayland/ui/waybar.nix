@@ -146,15 +146,18 @@ in
           window-rewrite = {
             "class<firefox>" = "&#8201;";
             "class<google-chrome>" = "&#8201;";
+            "class<thunderbird>" = "󰴃&#8201;";
+            "class<thunar>" = "&#8201;";
             "class<kitty>" = "󰄛&#8201;";
-            "class<discord>" = "&#8201;";
-            "class<vencord>" = "&#8201;";
+            "class<discord>" = "&#8194;";
+            "class<zoom>" = "󰹑&#8201;";
+            "class<obsidian>" = "&#8201;";
             "class<org.telegram.desktop>" = "&#8201;";
             "class<spotify>" = "&#8201;";
             "class<code.*>" = "󰨞&#8201;";
+            "class<AmneziaVPN>" = "";
             "class<steam>" = "&#8201;";
             "class<vlc>" = "󰕼&#8201;";
-            "class<thunar>" = "&#8201;";
           };
         };
 
