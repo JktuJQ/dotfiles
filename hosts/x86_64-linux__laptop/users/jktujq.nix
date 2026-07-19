@@ -50,7 +50,6 @@ username:
       (homeModulesDir + "applications/editors/neovim.nix")
 
       (homeModulesDir + "applications/utils/qalculate.nix")
-      (homeModulesDir + "applications/utils/obsidian.nix")
 
       (homeModulesDir + "applications/file_managers/yazi.nix")
       (homeModulesDir + "applications/file_managers/thunar.nix")
@@ -59,7 +58,10 @@ username:
 
       (homeModulesDir + "applications/media/images/imv.nix")
       (homeModulesDir + "applications/media/videos/mpv.nix")
+      (homeModulesDir + "applications/media/videos/obs.nix")
+      (homeModulesDir + "applications/media/music/spotify.nix")
       (homeModulesDir + "applications/media/documents/zathura.nix")
+      (homeModulesDir + "applications/media/documents/obsidian.nix")
 
       (homeModulesDir + "/applications/communications/thunderbird.nix")
       (homeModulesDir + "/applications/communications/telegram.nix")

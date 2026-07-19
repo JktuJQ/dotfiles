@@ -154,6 +154,7 @@ in
             "class<obsidian>" = "&#8201;";
             "class<org.telegram.desktop>" = "&#8201;";
             "class<spotify>" = "&#8201;";
+            "class<com.obsproject.Studio>" = "&#8201;";
             "class<code.*>" = "󰨞&#8201;";
             "class<AmneziaVPN>" = "";
             "class<steam>" = "&#8201;";

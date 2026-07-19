@@ -24,6 +24,7 @@
     (nixosModulesDir + "/networking/ssh/openssh.nix")
 
     (nixosModulesDir + "applications/allow_unfree.nix")
+    (nixosModulesDir + "applications/games/steam.nix")
 
     (nixosModulesDir + "/desktop/xdg.nix")
     (nixosModulesDir + "/desktop/wayland/regreet.nix")
