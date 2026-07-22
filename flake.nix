@@ -36,7 +36,6 @@
       inherit (import ./hosts { inherit inputs; })
         nixosConfigurations
         darwinConfigurations
-        homeConfigurations
         ;
 
       templates = import ./dev-shells;

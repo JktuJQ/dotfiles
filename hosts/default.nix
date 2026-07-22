@@ -57,22 +57,18 @@ let
         file: (import file) (lib.removeSuffix ".nix" (builtins.baseNameOf file))
       ) cfg.userFiles;
 
+      hostNameModule =
+        { lib, hostname, ... }:
+        {
+          networking.hostName = lib.mkDefault hostname;
+        };
+
       modules = [
         cfg.configurationPath
       ]
       ++ userModules
       ++ (
-        if hasSuffix "linux" cfg.system || hasSuffix "darwin" cfg.system then
-          [
-            (
-              { lib, hostname, ... }:
-              {
-                networking.hostName = lib.mkDefault hostname;
-              }
-            )
-          ]
-        else
-          [ ]
+        if hasSuffix "linux" cfg.system || hasSuffix "darwin" cfg.system then [ hostNameModule ] else [ ]
       );
     in
     builder {
@@ -101,19 +97,12 @@ builtins.foldl'
             ${cfg.hostname} = buildConfig inputs.darwin.lib.darwinSystem cfg;
           };
         }
-      else if cfg.system == "home" then
-        {
-          homeConfigurations = acc.homeConfigurations // {
-            ${cfg.hostname} = buildConfig inputs.home-manager.lib.homeManagerConfiguration cfg;
-          };
-        }
       else
-        throw "Invalid system type in ${cfg.system} (must end with 'linux', 'darwin', or be 'home')"
+        throw "Invalid system type in ${cfg.system} (must end with 'linux' or 'darwin')"
     )
   )
   {
     nixosConfigurations = { };
     darwinConfigurations = { };
-    homeConfigurations = { };
   }
   configurations

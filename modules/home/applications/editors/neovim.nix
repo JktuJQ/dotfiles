@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, lib, ... }:
 {
   programs.neovim = {
     enable = true;
@@ -10,12 +10,15 @@
       nixfmt
     ];
   };
-  xdg.configFile."nvim".source = pkgs.fetchFromGitHub {
+
+  xdg.configFile."nvim".source = config.lib.file.mkOutOfStoreSymlink
+    (config.home.homeDirectory + "/Projects/nvim");
+  /* = pkgs.fetchFromGitHub {
     owner = "JktuJQ";
     repo = "nvim";
     rev = "main";
-    sha256 = "sha256-XIdnESRuXThu89hERZokUEXhct/q3d/drhrkThxTFqM=";
-  };
+    sha256 = lib.fakeSha256;
+  }; */
 
   stylix.targets.neovim.enable = false;
 
