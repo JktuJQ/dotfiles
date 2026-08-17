@@ -34,6 +34,8 @@ username:
       (homeModulesDir + "terminal/cli/ripgrep.nix")
       (homeModulesDir + "terminal/cli/btop.nix")
       (homeModulesDir + "terminal/cli/git.nix")
+      (homeModulesDir + "terminal/cli/gh.nix")
+      (homeModulesDir + "terminal/cli/lazygit.nix")
       (homeModulesDir + "terminal/cli/curl.nix")
 
       (homeModulesDir + "terminal/cli/colors.nix")
