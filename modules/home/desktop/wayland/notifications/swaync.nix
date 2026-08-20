@@ -447,6 +447,10 @@ in
         color: @fg;
       }
 
+      .widget-dnd > label {
+        color: @fg;
+      }
+
       .widget-dnd > switch {
         border-radius: 20px;
         background: @border;

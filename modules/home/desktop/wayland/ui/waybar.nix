@@ -59,7 +59,7 @@ in
         };
         "cpu" = {
           format = "&#8194;  ";
-          format-alt = "&#8194;  {usage}%  ";
+          format-alt = "&#8194;  {usage}% ";
           tooltip-format = "CPU: {usage}%";
         };
         "power-profiles-daemon" = {
