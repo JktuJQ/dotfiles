@@ -25,21 +25,27 @@ username:
     imports = [
       (homeModulesDir + "terminal/cli/nh.nix")
       (homeModulesDir + "terminal/cli/direnv.nix")
-
-      (homeModulesDir + "terminal/cli/zoxide.nix")
-      (homeModulesDir + "terminal/cli/bat.nix")
-      (homeModulesDir + "terminal/cli/eza.nix")
-      (homeModulesDir + "terminal/cli/fd.nix")
-      (homeModulesDir + "terminal/cli/fzf.nix")
-      (homeModulesDir + "terminal/cli/ripgrep.nix")
-      (homeModulesDir + "terminal/cli/btop.nix")
-      (homeModulesDir + "terminal/cli/git.nix")
-      (homeModulesDir + "terminal/cli/gh.nix")
-      (homeModulesDir + "terminal/cli/lazygit.nix")
+      (homeModulesDir + "terminal/cli/tmux.nix")
       (homeModulesDir + "terminal/cli/curl.nix")
+      (homeModulesDir + "terminal/cli/fzf.nix")
+      (homeModulesDir + "terminal/cli/btop.nix")
+      (homeModulesDir + "terminal/cli/man.nix")
 
-      (homeModulesDir + "terminal/cli/colors.nix")
-      (homeModulesDir + "terminal/cli/fastfetch.nix")
+      (homeModulesDir + "terminal/cli/coreutils/zoxide.nix")
+      (homeModulesDir + "terminal/cli/coreutils/bat.nix")
+      (homeModulesDir + "terminal/cli/coreutils/eza.nix")
+      (homeModulesDir + "terminal/cli/coreutils/fd.nix")
+      (homeModulesDir + "terminal/cli/coreutils/ripgrep.nix")
+
+      (homeModulesDir + "terminal/cli/git/git.nix")
+      (homeModulesDir + "terminal/cli/git/gh.nix")
+      (homeModulesDir + "terminal/cli/git/lazygit.nix")
+
+      (homeModulesDir + "terminal/cli/ai/copilot.nix")
+
+      (homeModulesDir + "terminal/cli/appearance/color-scripts.nix")
+      (homeModulesDir + "terminal/cli/appearance/rgrc.nix")
+      (homeModulesDir + "terminal/cli/appearance/fastfetch.nix")
 
       (homeModulesDir + "terminal/shells/starship.nix")
       (homeModulesDir + "terminal/shells/bash.nix")
@@ -65,10 +71,10 @@ username:
       (homeModulesDir + "applications/media/documents/zathura.nix")
       (homeModulesDir + "applications/media/documents/obsidian.nix")
 
-      (homeModulesDir + "/applications/communications/thunderbird.nix")
-      (homeModulesDir + "/applications/communications/telegram.nix")
-      (homeModulesDir + "/applications/communications/discord.nix")
-      (homeModulesDir + "/applications/communications/zoom.nix")
+      (homeModulesDir + "applications/communications/thunderbird.nix")
+      (homeModulesDir + "applications/communications/telegram.nix")
+      (homeModulesDir + "applications/communications/discord.nix")
+      (homeModulesDir + "applications/communications/zoom.nix")
 
       (homeModulesDir + "desktop/xdg.nix")
       (homeModulesDir + "desktop/udiskie.nix")

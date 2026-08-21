@@ -1,34 +1,35 @@
 { nixosModulesDir, ... }:
 {
   imports = [
-    (nixosModulesDir + "/nix.nix")
+    (nixosModulesDir + "nix.nix")
+    (nixosModulesDir + "documentation.nix")
 
-    (nixosModulesDir + "/system/boot.nix")
-    (nixosModulesDir + "/system/users.nix")
-    (nixosModulesDir + "/system/locale.nix")
-    (nixosModulesDir + "/system/dbus.nix")
+    (nixosModulesDir + "system/boot.nix")
+    (nixosModulesDir + "system/users.nix")
+    (nixosModulesDir + "system/locale.nix")
+    (nixosModulesDir + "system/dbus.nix")
 
-    (nixosModulesDir + "/hardware/disks.nix")
-    (nixosModulesDir + "/hardware/battery.nix")
-    (nixosModulesDir + "/hardware/graphics.nix")
+    (nixosModulesDir + "hardware/disks.nix")
+    (nixosModulesDir + "hardware/battery.nix")
+    (nixosModulesDir + "hardware/graphics.nix")
 
-    (nixosModulesDir + "/peripherals/seatd.nix")
-    (nixosModulesDir + "/peripherals/audio.nix")
-    (nixosModulesDir + "/peripherals/video.nix")
+    (nixosModulesDir + "peripherals/seatd.nix")
+    (nixosModulesDir + "peripherals/audio.nix")
+    (nixosModulesDir + "peripherals/video.nix")
 
-    (nixosModulesDir + "/networking/network-manager.nix")
-    (nixosModulesDir + "/networking/bluetooth.nix")
+    (nixosModulesDir + "networking/network-manager.nix")
+    (nixosModulesDir + "networking/bluetooth.nix")
 
-    (nixosModulesDir + "/networking/vpn/wireguard_client.nix")
+    (nixosModulesDir + "networking/vpn/wireguard_client.nix")
 
-    (nixosModulesDir + "/networking/ssh/openssh.nix")
+    (nixosModulesDir + "networking/ssh/openssh.nix")
 
     (nixosModulesDir + "applications/allow_unfree.nix")
     (nixosModulesDir + "applications/games/steam.nix")
 
-    (nixosModulesDir + "/desktop/xdg.nix")
-    (nixosModulesDir + "/desktop/wayland/regreet.nix")
-    (nixosModulesDir + "/desktop/wayland/compositors/hyprland.nix")
-    (nixosModulesDir + "/desktop/wayland/utils/hyprlock.nix")
+    (nixosModulesDir + "desktop/xdg.nix")
+    (nixosModulesDir + "desktop/wayland/regreet.nix")
+    (nixosModulesDir + "desktop/wayland/compositors/hyprland.nix")
+    (nixosModulesDir + "desktop/wayland/utils/hyprlock.nix")
   ];
 }

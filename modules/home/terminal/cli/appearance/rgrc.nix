@@ -1,9 +1,6 @@
 { pkgs, ... }:
 {
-  home.packages = with pkgs; [
-    dwt1-shell-color-scripts
-    rgrc
-  ];
+  home.packages = [ pkgs.rgrc ];
 
   home.shellAliases = {
     df = "rgrc df";
