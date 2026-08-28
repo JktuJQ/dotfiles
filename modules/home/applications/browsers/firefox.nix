@@ -20,11 +20,6 @@ in
           installation_mode = "force_installed";
         };
 
-        "vimium-c@gdh1995.cn" = {
-          install_url = extensionUrl "vimium-c";
-          installation_mode = "force_installed";
-        };
-
         "{2e5ff8c8-32fe-46d0-9fc8-6b8986621f3c}" = {
           install_url = extensionUrl "search_by_image";
           installation_mode = "force_installed";

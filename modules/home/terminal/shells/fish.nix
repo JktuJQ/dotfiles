@@ -27,6 +27,8 @@
       fastfetch
 
       fish_vi_key_bindings
+      bind -M insert -e alt-v
+      bind -M insert ctrl-alt-e edit_command_buffer
     '';
   };
 

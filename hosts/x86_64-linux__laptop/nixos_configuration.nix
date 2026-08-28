@@ -16,6 +16,7 @@
     (nixosModulesDir + "peripherals/seatd.nix")
     (nixosModulesDir + "peripherals/audio.nix")
     (nixosModulesDir + "peripherals/video.nix")
+    (nixosModulesDir + "peripherals/keyd.nix")
 
     (nixosModulesDir + "networking/network-manager.nix")
     (nixosModulesDir + "networking/bluetooth.nix")

@@ -1,4 +1,5 @@
-{ config, ... }: let
+{ config, ... }:
+let
   colors = config.lib.stylix.colors;
   font = config.stylix.fonts.monospace.name;
   wallpaper = config.stylix.image;
@@ -119,6 +120,16 @@ in
           position = "150, -380";
           halign = "center";
           valign = "top";
+        }
+        {
+          text = "$LAYOUT";
+          color = "rgb(${colors.base05})";
+          font_size = 14;
+          font_family = font;
+          position = "0, 180";
+          halign = "center";
+          valign = "bottom";
+          onclick = "hyprctl switchxkblayout current next";
         }
       ];
 

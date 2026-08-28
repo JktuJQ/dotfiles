@@ -12,7 +12,7 @@
       cursor_blink_interval = 0;
     };
     keybindings = {
-      "alt+c" = "copy_or_interrupt";
+      "ctrl+y" = "copy_or_interrupt";
       "alt+v" = "paste_from_clipboard";
     };
   };
