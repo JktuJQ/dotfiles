@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 {
   programs.neovim = {
     enable = true;
@@ -8,17 +13,22 @@
     extraPackages = with pkgs; [
       nil
       nixfmt
+
+      tree-sitter
     ];
   };
 
-  xdg.configFile."nvim".source = config.lib.file.mkOutOfStoreSymlink
-    (config.home.homeDirectory + "/Projects/nvim");
-  /* = pkgs.fetchFromGitHub {
-    owner = "JktuJQ";
-    repo = "nvim";
-    rev = "main";
-    sha256 = lib.fakeSha256;
-  }; */
+  xdg.configFile."nvim".source = config.lib.file.mkOutOfStoreSymlink (
+    config.home.homeDirectory + "/Projects/nvim"
+  );
+  /*
+    = pkgs.fetchFromGitHub {
+      owner = "JktuJQ";
+      repo = "nvim";
+      rev = "main";
+      sha256 = lib.fakeSha256;
+    };
+  */
 
   stylix.targets.neovim.enable = false;
 
