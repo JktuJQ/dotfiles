@@ -22,7 +22,7 @@
 
           bind -M insert ctrl-alt-c fzf-cd-widget
           bind -M insert ctrl-alt-h fzf-history-widget
-          bind -M insert ctrl-alt-v _fzf_search_variables
+          bind -M insert ctrl-alt-v '_fzf_search_variables (set --show | psub) (set --names | psub)'
         end
         fish_user_key_bindings
       '';

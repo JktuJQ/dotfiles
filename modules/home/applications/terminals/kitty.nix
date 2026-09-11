@@ -13,7 +13,7 @@
     };
     keybindings = {
       "ctrl+y" = "copy_or_interrupt";
-      "alt+v" = "paste_from_clipboard";
+      "ctrl+p" = "paste_from_clipboard";
     };
   };
 

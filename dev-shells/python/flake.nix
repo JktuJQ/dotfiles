@@ -31,7 +31,7 @@
             python.pkgs.pip
             python.pkgs.venvShellHook
 
-            pyright
+            basedpyright
             python.pkgs.black
           ];
 
