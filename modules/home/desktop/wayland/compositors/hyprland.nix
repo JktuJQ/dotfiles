@@ -96,7 +96,7 @@ in
           follow_mouse = 1;
           touchpad = {
             natural_scroll = true;
-            disable_while_typing = true;
+            disable_while_typing = false;
           };
           sensitivity = 0;
         };

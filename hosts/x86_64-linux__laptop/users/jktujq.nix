@@ -27,6 +27,7 @@ username:
       (homeModulesDir + "terminal/cli/direnv.nix")
       (homeModulesDir + "terminal/cli/tmux.nix")
       (homeModulesDir + "terminal/cli/curl.nix")
+      (homeModulesDir + "terminal/cli/ffmpeg.nix")
       (homeModulesDir + "terminal/cli/fzf.nix")
       (homeModulesDir + "terminal/cli/btop.nix")
       (homeModulesDir + "terminal/cli/man.nix")

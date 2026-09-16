@@ -18,7 +18,7 @@
       let
         pkgs = nixpkgs.legacyPackages.${system};
 
-        ghcVersion = "ghc"; # "ghc92", "ghc94", "ghc96", "ghc810"
+        ghcVersion = "ghc98"; # "ghc92", "ghc94", "ghc96", "ghc810"
 
         ghc = pkgs.haskell.packages.${ghcVersion}.ghc;
         hls = pkgs.haskell.packages.${ghcVersion}.haskell-language-server;
