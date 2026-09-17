@@ -34,7 +34,7 @@
         package = pkgs.noto-fonts-color-emoji;
         name = "Noto Color Emoji";
       };
-      sizes.terminal = 18;
+      sizes.terminal = 16;
     };
     icons = {
       enable = true;
