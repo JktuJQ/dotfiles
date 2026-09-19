@@ -25,7 +25,8 @@ username:
     imports = [
       (homeModulesDir + "terminal/cli/nh.nix")
       (homeModulesDir + "terminal/cli/direnv.nix")
-      (homeModulesDir + "terminal/cli/tmux.nix")
+      #(homeModulesDir + "terminal/cli/tmux.nix")
+      (homeModulesDir + "terminal/cli/zellij.nix")
       (homeModulesDir + "terminal/cli/curl.nix")
       (homeModulesDir + "terminal/cli/ffmpeg.nix")
       (homeModulesDir + "terminal/cli/fzf.nix")
