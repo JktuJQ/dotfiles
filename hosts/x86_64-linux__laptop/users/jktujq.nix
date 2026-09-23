@@ -72,6 +72,7 @@ username:
       (homeModulesDir + "applications/media/videos/obs.nix")
       (homeModulesDir + "applications/media/music/spotify.nix")
       (homeModulesDir + "applications/media/documents/zathura.nix")
+      (homeModulesDir + "applications/media/documents/libreoffice.nix")
       (homeModulesDir + "applications/media/documents/obsidian.nix")
 
       (homeModulesDir + "applications/communications/thunderbird.nix")
