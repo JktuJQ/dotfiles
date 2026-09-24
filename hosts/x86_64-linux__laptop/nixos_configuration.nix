@@ -17,6 +17,7 @@
     (nixosModulesDir + "peripherals/audio.nix")
     (nixosModulesDir + "peripherals/video.nix")
     #(nixosModulesDir + "peripherals/keyd.nix")
+    
 
     (nixosModulesDir + "networking/network-manager.nix")
     (nixosModulesDir + "networking/bluetooth.nix")
@@ -27,6 +28,9 @@
 
     (nixosModulesDir + "applications/allow_unfree.nix")
     (nixosModulesDir + "applications/games/steam.nix")
+    (nixosModulesDir + "applications/virtualisation/podman.nix")
+    (nixosModulesDir + "applications/ai/openvino.nix")
+    (nixosModulesDir + "applications/ai/webui.nix")
 
     (nixosModulesDir + "desktop/xdg.nix")
     (nixosModulesDir + "desktop/wayland/regreet.nix")

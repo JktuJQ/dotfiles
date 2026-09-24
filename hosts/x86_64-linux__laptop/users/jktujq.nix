@@ -16,6 +16,8 @@ username:
       "video"
       "networkmanager"
       "bluetooth"
+
+      "podman"
     ];
 
     hashedPasswordFile = config.age.secrets."${username}_hashed_password".path;
@@ -61,6 +63,8 @@ username:
       (homeModulesDir + "applications/editors/neovim.nix")
 
       (homeModulesDir + "applications/utils/qalculate.nix")
+
+      (homeModulesDir + "applications/virtualisation/podman-desktop.nix")
 
       (homeModulesDir + "applications/file_managers/yazi.nix")
       (homeModulesDir + "applications/file_managers/thunar.nix")
