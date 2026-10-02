@@ -1,3 +1,4 @@
+{ inputs, self, ... }:
 {
   imports = [
     ./hardware_configuration.nix
@@ -12,4 +13,8 @@
   ];
 
   system.stateVersion = "26.05";
+
+  nixpkgs.overlays = [
+    (import (self + "/overlays") { inherit inputs; })
+  ];
 }

@@ -47,6 +47,7 @@ username:
       (homeModulesDir + "terminal/cli/git/lazygit.nix")
 
       (homeModulesDir + "terminal/cli/ai/copilot.nix")
+      (homeModulesDir + "terminal/cli/ai/codex.nix")
 
       (homeModulesDir + "terminal/cli/appearance/color-scripts.nix")
       (homeModulesDir + "terminal/cli/appearance/rgrc.nix")

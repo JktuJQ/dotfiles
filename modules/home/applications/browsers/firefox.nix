@@ -148,6 +148,10 @@ in
                     name = "Qwen Chat";
                     url = "https://chat.qwen.ai/";
                   }
+                  {
+                    name = "ChatGPT";
+                    url = "https://chatgpt.com/";
+                  }
                 ];
               }
               {
