@@ -11,7 +11,15 @@ let
 
   hostDir = ./.;
   dirContents = builtins.readDir hostDir;
-  dirNames = attrNames (filterAttrs (name: type: type == "directory") dirContents);
+  dirNames = attrNames (
+    filterAttrs (
+      name: type:
+      let
+        parts = splitString "__" name;
+      in
+      type == "directory" && builtins.length parts == 2 && elemAt parts 0 != "" && elemAt parts 1 != ""
+    ) dirContents
+  );
   parseDir =
     dirName:
     let
@@ -23,19 +31,43 @@ let
       usersDir = hostDir + "/${dirName}/users/";
       userFiles =
         if builtins.pathExists usersDir then
-          map (name: usersDir + "/${name}") (attrNames (builtins.readDir usersDir))
+          map (name: usersDir + "/${name}") (
+            attrNames (
+              filterAttrs (name: type: type == "regular" && hasSuffix ".nix" name) (builtins.readDir usersDir)
+            )
+          )
         else
           [ ];
     in
-    {
-      inherit
-        system
-        hostname
-        configurationPath
-        userFiles
-        ;
-    };
+    if !builtins.pathExists configurationPath then
+      throw "Host '${dirName}' is missing hosts/${dirName}/configuration.nix. Create this file to configure the host."
+    else if !(hasSuffix "linux" system || hasSuffix "darwin" system) then
+      throw "Host '${dirName}' has unsupported system '${system}'; the system must end with 'linux' or 'darwin'."
+    else
+      {
+        inherit
+          system
+          hostname
+          configurationPath
+          userFiles
+          ;
+      };
   configurations = map parseDir dirNames;
+
+  addHost =
+    namespace: builder: acc: cfg:
+    let
+      existing = acc.${namespace};
+    in
+    if builtins.hasAttr cfg.hostname existing then
+      throw "Duplicate hostname '${cfg.hostname}' in ${namespace}. Host directories must have unique hostnames within each configuration type."
+    else
+      acc
+      // {
+        ${namespace} = existing // {
+          ${cfg.hostname} = buildConfig builder cfg;
+        };
+      };
 
   commonSpecialArgs = rec {
     inherit (inputs) self;
@@ -83,23 +115,10 @@ in
 builtins.foldl'
   (
     acc: cfg:
-    acc
-    // (
-      if hasSuffix "linux" cfg.system then
-        {
-          nixosConfigurations = acc.nixosConfigurations // {
-            ${cfg.hostname} = buildConfig inputs.nixpkgs.lib.nixosSystem cfg;
-          };
-        }
-      else if hasSuffix "darwin" cfg.system then
-        {
-          darwinConfigurations = acc.darwinConfigurations // {
-            ${cfg.hostname} = buildConfig inputs.darwin.lib.darwinSystem cfg;
-          };
-        }
-      else
-        throw "Invalid system type in ${cfg.system} (must end with 'linux' or 'darwin')"
-    )
+    if hasSuffix "linux" cfg.system then
+      addHost "nixosConfigurations" inputs.nixpkgs.lib.nixosSystem acc cfg
+    else
+      addHost "darwinConfigurations" inputs.darwin.lib.darwinSystem acc cfg
   )
   {
     nixosConfigurations = { };
