@@ -309,6 +309,42 @@ in
           monitor = (monitor + 1) % 2
       end)
 
+      hl.bind("SUPER + SHIFT + TAB + A", function()
+          local source = hl.get_active_monitor()
+          if not source then return end
+
+          local targetName
+          if source.name == "${monitor1}" then
+              targetName = "${monitor2}"
+          elseif source.name == "${monitor2}" then
+              targetName = "${monitor1}"
+          else
+              return
+          end
+
+          local target = hl.get_monitor(targetName)
+          if not target or not target.active_workspace then return end
+
+          local moves = {}
+          for _, window in ipairs(hl.get_windows({ monitor = source, mapped = true })) do
+              local workspace = window.workspace
+              local destination = target.active_workspace.id
+              if workspace and workspace.id >= 1 and workspace.id <= ${toString (2 * workspaces)} then
+                  local number = (workspace.id - 1) % ${toString workspaces} + 1
+                  destination = number + (targetName == "${monitor2}" and ${toString workspaces} or 0)
+              end
+              table.insert(moves, { window = window, workspace = destination })
+          end
+
+          for _, move in ipairs(moves) do
+              hl.dispatch(hl.dsp.window.move({
+                  window = move.window,
+                  workspace = move.workspace,
+                  follow = false,
+              }))
+          end
+      end)
+
       for i = 1, ${toString workspaces} do
           local num = i
 
