@@ -151,7 +151,7 @@ in
       .control-center {
         background: alpha(@bg, 0.92);
         border: 2px solid @accent;
-        border-radius: 30px;
+        border-radius: ${toString config.wayland.windowManager.hyprland.settings.config.decoration.rounding}px;
       }
 
       .control-center-list {

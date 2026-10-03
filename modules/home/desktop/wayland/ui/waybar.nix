@@ -17,7 +17,7 @@ in
       mainBar = {
         layer = "top";
         position = "top";
-        margin = "10 20 0 20";
+        margin = "6 20 0 20";
         spacing = 0;
 
         modules-left = [
@@ -302,7 +302,7 @@ in
         background-color: @bg;
         color: @text-sec;
         border-radius: 20px;
-        padding: 4px 14px;
+        padding: 3px 14px;
         margin: 0 6px;
       }
       window#waybar .modules-left > widget > box > widget > *,
@@ -317,7 +317,7 @@ in
       }
       window#waybar {
         background-color: transparent;
-        min-height: 40px;
+        min-height: 36px;
       }
 
       window#waybar #custom-nixlogo {
@@ -345,7 +345,7 @@ in
       }
 
       #workspaces {
-        padding: 4px 6px;
+        padding: 3px 6px;
       }
       #workspaces button {
         color: @text-sec;
